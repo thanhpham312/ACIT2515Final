@@ -1,4 +1,5 @@
 from tkinter import *
+from .check_balance_ui import CheckBalance
 
 class MainUI():
     def __init__(self, master):
@@ -14,15 +15,16 @@ class MainUI():
         self.file_menu.add_command(label='Quit', command=self.master.quit)
 
         # Frames:
-        self.left_buttons_frame = Frame(self.master)
-        self.middle_interface_frame = Frame(self.master)
-        self.right_buttons_frame = Frame(self.master)
+        self.upper_interface_frame = Frame(self.master)
+        self.bottom_buttons_frame = Frame(self.master)
 
+        self.check_balance = CheckBalance(self.middle_interface_frame)
         # Gridding:
 
-        self.left_buttons_frame.grid(row=0, column=0, padx=20, pady=10)
-        self.middle_interface_frame.grid(row=1, column=0, padx=20, pady=10)
-        self.right_buttons_frame.grid(row=2, column=0, padx=20, pady=10)
+        self.upper_interface_frame.grid(row=0, column=0, padx=20, pady=10)
+        self.bottom_buttons_frame.grid(row=1, column=0, padx=20, pady=10)
 
 if __name__ == '__main__':
-    pass
+    root = Tk()
+    MainUI(root)
+    mainloop()

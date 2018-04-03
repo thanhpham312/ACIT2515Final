@@ -50,18 +50,12 @@ class MainInterface():
         elif interface == 'main_menu':
             self.redraw_main_interface_frame()
             self.current_frame = MainMenuInterface(self.main_interface_frame)
-<<<<<<< HEAD
         elif interface == 'quick_cash':
             self.redraw_main_interface_frame()
             self.current_frame = WithdrawInterface(self.main_interface_frame)
-=======
         elif interface == 'withdraw':
-            self.main_interface_frame.destroy()
-            self.main_interface_frame = Frame(self.master, bg='green')
-            self.main_interface_frame.grid(row=0, column=0, padx=20, pady=20, sticky=N + S + E + W)
-            del self.current_frame
-            self.current_frame = withdrawInterface(self.main_interface_frame)
->>>>>>> d4352eeae965b01082a58b3fc88d3654ce06ed41
+            self.redraw_main_interface_frame()
+            self.current_frame = WithdrawInterface(self.main_interface_frame)
         elif interface == 'check_balance':
             self.redraw_main_interface_frame()
             self.current_frame = CheckBalanceInterface(self.main_interface_frame)

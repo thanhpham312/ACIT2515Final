@@ -1,5 +1,5 @@
 from tkinter import *
-from constants import *
+from .constants import *
 
 class depositInterface():
 
@@ -30,7 +30,7 @@ class depositInterface():
 
         # widgets
 
-        self.top_label = Label(self.top_frame, text="Please enter deposit amount", font=50)
+        self.top_label = Label(self.top_frame, text="Please enter deposit amount")
         self.middle_amount_box = Entry(self.middle_frame, font=100, justify=CENTER)
         self.bottom_cancel_button = Button(self.bottom_frame, text="Cancel", width=30, height=2)
         self.bottom_continue_button = Button(self.bottom_frame, text="Continue", width=30, height=2)

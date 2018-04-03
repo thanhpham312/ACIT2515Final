@@ -1,5 +1,5 @@
 # Window:
-WINDOW_WIDTH = 600
+WINDOW_WIDTH = 650
 WINDOW_HEIGHT = 400
 
 # Font:

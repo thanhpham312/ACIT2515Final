@@ -1,8 +1,8 @@
 from tkinter import *
 from tkinter import font
-from constants import *
+from .constants import *
 
-class MainMenu():
+class MainMenuInterface():
     def __init__(self, master, account=None):
         self.master = master
 
@@ -57,5 +57,5 @@ class MainMenu():
 if __name__ == '__main__':
     root = Tk()
     root.geometry(str(WINDOW_WIDTH) + 'x' + str(WINDOW_HEIGHT))
-    MainMenu(root)
+    MainMenuInterface(root)
     mainloop()

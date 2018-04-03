@@ -31,13 +31,19 @@ class MainUI():
         self.upper_interface_frame.grid(row=0, column=0, padx=20, pady=20,  sticky=N+S+E+W)
         # self.bottom_buttons_frame.grid(row=1, column=0, padx=20, pady=10,  sticky=N+S+E+W)
 
-    def draw_interface(self):
+    def draw_interface(self, interface):
         # self.current_frame = CheckBalance(self.upper_interface_frame)
-        self.current_frame = depositInterface(self.upper_interface_frame)
+        # self.current_frame = depositInterface(self.upper_interface_frame)
+        if interface == 'main_menu':
+            self.current_frame = CheckBalance(self.upper_interface_frame)
+        elif interface == 'check_balance':
+            self.current_frame = CheckBalance(self.upper_interface_frame)
+        elif interface == 'deposit':
+            self.current_frame = depositInterface(self.upper_interface_frame)
 
 if __name__ == '__main__':
     root = Tk()
     # root.geometry('600x450')
     new_window = MainUI(root)
-    new_window.draw_interface()
+    # new_window.draw_interface()
     mainloop()

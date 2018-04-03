@@ -1,6 +1,7 @@
 from tkinter import *
 from .constants import *
 from .main_menu_interface import MainMenuInterface
+from .withdraw_interface import withdrawInterface
 from .check_balance_interface import CheckBalanceInterface
 from .deposit_interface import depositInterface
 
@@ -41,6 +42,12 @@ class MainInterface():
             self.main_interface_frame.grid(row=0, column=0, padx=20, pady=20, sticky=N + S + E + W)
             del self.current_frame
             self.current_frame = MainMenuInterface(self.main_interface_frame)
+        elif interface == 'quick_cash':
+            self.main_interface_frame.destroy()
+            self.main_interface_frame = Frame(self.master, bg='green')
+            self.main_interface_frame.grid(row=0, column=0, padx=20, pady=20, sticky=N + S + E + W)
+            del self.current_frame
+            self.current_frame = withdrawInterface(self.main_interface_frame)
         elif interface == 'check_balance':
             self.main_interface_frame.destroy()
             self.main_interface_frame = Frame(self.master, bg='green')

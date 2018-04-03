@@ -1,9 +1,6 @@
 from tkinter import *
 
-
-
-
-class PinScreen():
+class PinInterface():
     def __init__(self, master, photo_p):
         self.master = master
 
@@ -116,7 +113,7 @@ class PinScreen():
 if __name__ == '__main__':
     root = Tk()
     root.geometry('600x450')
-    photo = PhotoImage(file="image_file/protect_pin.gif")
-    PinScreen(root, photo)
+    photo = PhotoImage(file="assets/images/protect_pin.gif")
+    PinInterface(root, photo)
     mainloop()
 

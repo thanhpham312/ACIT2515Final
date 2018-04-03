@@ -1,9 +1,10 @@
 from tkinter import *
 from .constants import *
 from .main_menu_interface import MainMenuInterface
-from .withdraw_interface import withdrawInterface
+from .pin_interface import PinInterface
+from .withdraw_interface import WithdrawInterface
 from .check_balance_interface import CheckBalanceInterface
-from .deposit_interface import depositInterface
+from .deposit_interface import DepositInterface
 
 class MainInterface():
     def __init__(self, master):
@@ -22,7 +23,7 @@ class MainInterface():
 
         # Frames:
         self.main_interface_frame = Frame(self.master, bg='green')
-        self.current_frame = MainMenuInterface(self.main_interface_frame)
+        self.current_frame = MainMenuInterface(self.main_interface_frame, PhotoImage(file="views/assets/images/protect_pin.gif"))
         # self.bottom_buttons_frame = Frame(self.master, bg='black')
 
         # self.check_balance = CheckBalance(self.upper_interface_frame)
@@ -33,33 +34,31 @@ class MainInterface():
         self.main_interface_frame.grid(row=0, column=0, padx=20, pady=20, sticky=N + S + E + W)
         # self.bottom_buttons_frame.grid(row=1, column=0, padx=20, pady=10,  sticky=N+S+E+W)
 
+    def redraw_main_interface_frame(self):
+        self.main_interface_frame.destroy()
+        self.main_interface_frame = Frame(self.master, bg='green')
+        self.main_interface_frame.grid(row=0, column=0, padx=20, pady=20, sticky=N + S + E + W)
+        del self.current_frame
+
+
     def draw_interface(self, interface):
         # self.current_frame = CheckBalance(self.upper_interface_frame)
         # self.current_frame = depositInterface(self.upper_interface_frame)
-        if interface == 'main_menu':
-            self.main_interface_frame.destroy()
-            self.main_interface_frame = Frame(self.master, bg='green')
-            self.main_interface_frame.grid(row=0, column=0, padx=20, pady=20, sticky=N + S + E + W)
-            del self.current_frame
+        if interface == 'pin':
+            self.redraw_main_interface_frame()
+            self.current_frame = PinInterface(self.main_interface_frame)
+        elif interface == 'main_menu':
+            self.redraw_main_interface_frame()
             self.current_frame = MainMenuInterface(self.main_interface_frame)
         elif interface == 'quick_cash':
-            self.main_interface_frame.destroy()
-            self.main_interface_frame = Frame(self.master, bg='green')
-            self.main_interface_frame.grid(row=0, column=0, padx=20, pady=20, sticky=N + S + E + W)
-            del self.current_frame
-            self.current_frame = withdrawInterface(self.main_interface_frame)
+            self.redraw_main_interface_frame()
+            self.current_frame = WithdrawInterface(self.main_interface_frame)
         elif interface == 'check_balance':
-            self.main_interface_frame.destroy()
-            self.main_interface_frame = Frame(self.master, bg='green')
-            self.main_interface_frame.grid(row=0, column=0, padx=20, pady=20, sticky=N + S + E + W)
-            del self.current_frame
+            self.redraw_main_interface_frame()
             self.current_frame = CheckBalanceInterface(self.main_interface_frame)
         elif interface == 'deposit':
-            self.main_interface_frame.destroy()
-            self.main_interface_frame = Frame(self.master, bg='green')
-            self.main_interface_frame.grid(row=0, column=0, padx=20, pady=20, sticky=N + S + E + W)
-            del self.current_frame
-            self.current_frame = depositInterface(self.main_interface_frame)
+            self.redraw_main_interface_frame()
+            self.current_frame = DepositInterface(self.main_interface_frame)
 
 if __name__ == '__main__':
     root = Tk()

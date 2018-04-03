@@ -1,7 +1,7 @@
 from tkinter import *
 from .constants import *
 
-class withdrawInterface():
+class WithdrawInterface():
 
     def __init__(self, master: Frame):
         self.master = master
@@ -74,7 +74,7 @@ class withdrawInterface():
 if __name__ == '__main__':
     root = Tk()
     root.geometry('600x450')
-    withdrawInterface(root)
+    WithdrawInterface(root)
     mainloop()
 
 

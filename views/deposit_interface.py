@@ -6,8 +6,6 @@ class depositInterface():
     def __init__(self, master: Frame):
         self.master = master
 
-
-
         # frames
 
         self.top_frame = Frame(self.master)
@@ -30,10 +28,10 @@ class depositInterface():
 
         # widgets
 
-        self.top_label = Label(self.top_frame, text="Please enter deposit amount", font=50)
-        self.middle_amount_box = Entry(self.middle_frame, font=100, justify=CENTER)
-        self.bottom_cancel_button = Button(self.bottom_frame, text="Cancel", width=30, height=2)
-        self.bottom_continue_button = Button(self.bottom_frame, text="Continue", width=30, height=2)
+        self.top_label = Label(self.top_frame, text="Please enter deposit amount", font=("Courier", 20))
+        self.middle_amount_box = Entry(self.middle_frame, font=("Courier", 20), justify=CENTER)
+        self.bottom_cancel_button = Button(self.bottom_frame, text="Cancel", font=("Courier", 20), width=30, height=1)
+        self.bottom_continue_button = Button(self.bottom_frame, text="Continue", font=("Courier", 20), width=30, height=1)
 
 
         # grid the buttons
@@ -53,10 +51,10 @@ class depositInterface():
         self.bottom_frame.rowconfigure(0, weight=1)
 
 
-        self.top_label.grid(row=0, column=0, sticky=NSEW, padx=175, pady=50)
-        self.middle_amount_box.grid(row=0, column=0, sticky=NSEW, padx=200, pady=50)
-        self.bottom_cancel_button.grid(row=0, column=0, sticky=NSEW, padx=50, pady=50)
-        self.bottom_continue_button.grid(row=0, column=1, sticky=NSEW, padx=50, pady=50)
+        self.top_label.grid(row=0, column=0, sticky=NSEW, padx=10, pady=10)
+        self.middle_amount_box.grid(row=0, column=0, sticky=NSEW, padx=200, pady=80)
+        self.bottom_cancel_button.grid(row=0, column=0, sticky=NSEW, padx=(10,50), pady=50)
+        self.bottom_continue_button.grid(row=0, column=1, sticky=NSEW, padx=(50,10), pady=50)
 
 
 if __name__ == '__main__':

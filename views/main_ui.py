@@ -1,6 +1,7 @@
 from tkinter import *
 from constants import *
 from check_balance_ui import CheckBalance
+from deposit_interface import depositInterface
 
 class MainUI():
     def __init__(self, master):
@@ -31,7 +32,8 @@ class MainUI():
         # self.bottom_buttons_frame.grid(row=1, column=0, padx=20, pady=10,  sticky=N+S+E+W)
 
     def draw_interface(self):
-        self.current_frame = CheckBalance(self.upper_interface_frame)
+        # self.current_frame = CheckBalance(self.upper_interface_frame)
+        self.current_frame = depositInterface(self.upper_interface_frame)
 
 if __name__ == '__main__':
     root = Tk()

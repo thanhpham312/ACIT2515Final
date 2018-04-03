@@ -1,5 +1,5 @@
 from tkinter import *
-from .constants import *
+
 
 class DepositInterface():
 

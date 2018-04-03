@@ -1,5 +1,5 @@
 from tkinter import *
-from .constants import *
+from views.assets.constants import *
 from .main_menu_interface import MainMenuInterface
 from .pin_interface import PinInterface
 from .withdraw_interface import WithdrawInterface

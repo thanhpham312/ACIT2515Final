@@ -1,6 +1,5 @@
 from tkinter import *
-from tkinter import font
-from .constants import *
+from views.assets.constants import *
 
 class MainMenuInterface():
     def __init__(self, master, account=None):

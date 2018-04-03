@@ -1,8 +1,8 @@
 from tkinter import *
 from tkinter import font
-from constants import *
+from .constants import *
 
-class CheckBalance():
+class CheckBalanceInterface():
     def __init__(self, master, account=None):
         self.master = master
 
@@ -39,5 +39,6 @@ class CheckBalance():
 
 if __name__ == '__main__':
     root = Tk()
-    CheckBalance(root)
+    root.geometry(str(WINDOW_WIDTH) + 'x' + str(WINDOW_HEIGHT))
+    CheckBalanceInterface(root)
     mainloop()

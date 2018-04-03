@@ -20,15 +20,15 @@ class MainUI():
 
         # Frames:
         self.upper_interface_frame = Frame(self.master, bg='green')
-        self.bottom_buttons_frame = Frame(self.master, bg='black')
+        # self.bottom_buttons_frame = Frame(self.master, bg='black')
 
         # self.check_balance = CheckBalance(self.upper_interface_frame)
         # Gridding:
         self.master.rowconfigure(0, weight=1)
         self.master.columnconfigure(0, weight=1)
 
-        self.upper_interface_frame.grid(row=0, column=0, padx=20, pady=10,  sticky=N+S+E+W)
-        self.bottom_buttons_frame.grid(row=1, column=0, padx=20, pady=10,  sticky=N+S+E+W)
+        self.upper_interface_frame.grid(row=0, column=0, padx=20, pady=20,  sticky=N+S+E+W)
+        # self.bottom_buttons_frame.grid(row=1, column=0, padx=20, pady=10,  sticky=N+S+E+W)
 
     def draw_interface(self):
         self.current_frame = CheckBalance(self.upper_interface_frame)

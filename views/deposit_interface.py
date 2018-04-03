@@ -13,9 +13,9 @@ class depositInterface():
         self.top_frame = Frame(self.master)
         self.middle_frame = Frame(self.master)
         self.bottom_frame = Frame(self.master)
-        self.top_frame.config(bg='blue')
-        self.middle_frame.config(bg='red')
-        self.bottom_frame.config(bg='green')
+        # self.top_frame.config(bg='blue')
+        # self.middle_frame.config(bg='red')
+        # self.bottom_frame.config(bg='green')
 
 
         self.top_frame.grid(row=0, column=0, sticky=NSEW)
@@ -31,9 +31,9 @@ class depositInterface():
         # widgets
 
         self.top_label = Label(self.top_frame, text="Please enter deposit amount", font=50)
-        self.middle_amount_box = Entry(self.middle_frame)
-        self.bottom_cancel_button =Button(self.bottom_frame, text="Cancel")
-        self.bottom_continue_button =Button(self.bottom_frame, text="Continue")
+        self.middle_amount_box = Entry(self.middle_frame, font=100, justify=CENTER)
+        self.bottom_cancel_button = Button(self.bottom_frame, text="Cancel", width=30, height=2)
+        self.bottom_continue_button = Button(self.bottom_frame, text="Continue", width=30, height=2)
 
 
         # grid the buttons
@@ -42,15 +42,21 @@ class depositInterface():
         self.master.rowconfigure(2, weight=1)
         self.master.columnconfigure(0, weight=1)
 
+        self.top_frame.columnconfigure(0, weight=1)
+        self.top_frame.rowconfigure(0, weight=1)
+
+        self.middle_frame.columnconfigure(0, weight=1)
+        self.middle_frame.rowconfigure(0, weight=1)
+
         self.bottom_frame.columnconfigure(0, weight=1)
         self.bottom_frame.columnconfigure(1, weight=1)
         self.bottom_frame.rowconfigure(0, weight=1)
 
 
-        self.top_label.grid(row=0, column=0, sticky=NSEW)
-        self.middle_amount_box.grid(row=0, column=0)
-        self.bottom_cancel_button.grid(row=0, column=0, sticky=NSEW, pady=100, padx=100)
-        self.bottom_continue_button.grid(row=0, column=1, sticky=NSEW, padx=100, pady=100)
+        self.top_label.grid(row=0, column=0, sticky=NSEW, padx=175, pady=50)
+        self.middle_amount_box.grid(row=0, column=0, sticky=NSEW, padx=200, pady=50)
+        self.bottom_cancel_button.grid(row=0, column=0, sticky=NSEW, padx=50, pady=50)
+        self.bottom_continue_button.grid(row=0, column=1, sticky=NSEW, padx=50, pady=50)
 
 
 if __name__ == '__main__':

@@ -112,7 +112,7 @@ class PinInterface():
 
 if __name__ == '__main__':
     root = Tk()
-    root.geometry('600x450')
+    root.geometry('650x400')
     photo = PhotoImage(file="assets/images/protect_pin.gif")
     PinInterface(root, photo)
     mainloop()

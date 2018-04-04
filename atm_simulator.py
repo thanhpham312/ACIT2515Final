@@ -5,9 +5,8 @@ from controllers.main_controller import MainController
 class ATMSimulator():
     def __init__(self):
         self.root = Tk()
-        self.main_interface = MainInterface(self.root)
-        self.main_controller = MainController()
-        self.main_controller.reset_current_controller(self.main_interface)
+        self.main_controller = MainController(self.root)
+        self.main_controller.change_controller('pin')
 
 if __name__ == '__main__':
     atm1 = ATMSimulator()

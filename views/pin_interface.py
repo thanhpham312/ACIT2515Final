@@ -21,8 +21,8 @@ class PinInterface():
         self.enter_pin_text = Label(self.top_frame, text="Please enter your PIN\nthen press OK", font=("Courier", 15))
         self.enter_pin_field = Entry(self.top_frame, font=("Courier", 20), justify=CENTER)
 
-        photo_p = PhotoImage(file="views/assets/images/protect_pin.gif")
-        self.prot_pin_labed = Label(self.left_frame, image=photo_p)
+        self.photo_p = PhotoImage(file="views/assets/images/protect_pin.gif")
+        self.prot_pin_labed = Label(self.left_frame, image=self.photo_p)
 
         self.pin_pad_1 = Button(self.center_frame, text="1", anchor=W)
         self.pin_pad_2 = Button(self.center_frame, text="2", anchor=W)

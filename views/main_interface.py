@@ -27,7 +27,7 @@ class MainInterface():
 
     def redraw_main_interface_frame(self):
         self.main_interface_frame.destroy()
-        self.main_interface_frame = Frame(self.master, bg='green')
+        self.main_interface_frame = Frame(self.master)
         self.main_interface_frame.grid(row=0, column=0, padx=20, pady=20, sticky=N + S + E + W)
 
 if __name__ == '__main__':

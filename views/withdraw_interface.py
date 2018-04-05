@@ -1,9 +1,10 @@
 from tkinter import *
+from views.assets.constants import *
 
 
 class WithdrawInterface():
 
-    def __init__(self, master: Frame):
+    def __init__(self, master):
         self.master = master
 
         # frames
@@ -73,7 +74,7 @@ class WithdrawInterface():
 
 if __name__ == '__main__':
     root = Tk()
-    root.geometry('600x450')
+    root.geometry(str(WINDOW_WIDTH) + 'x' + str(WINDOW_HEIGHT))
     WithdrawInterface(root)
     mainloop()
 

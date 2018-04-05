@@ -4,7 +4,7 @@ from views.pin_interface import PinInterface
 class PinController():
     def __init__(self, main_controller):
         self.main_controller = main_controller
-        self.pin_interface = PinInterface(main_controller.main_interface.main_interface_frame, PhotoImage(file="views/assets/images/protect_pin.gif"))
+        self.pin_interface = PinInterface(main_controller.main_interface.main_interface_frame)
 
         self.pin_interface.pin_pad_OK.bind('<Button-1>', lambda event:
             self.main_controller.change_controller('main_menu'))

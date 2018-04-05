@@ -1,7 +1,8 @@
 from tkinter import *
+from views.assets.constants import *
 
 class PinInterface():
-    def __init__(self, master, photo_p):
+    def __init__(self, master):
         self.master = master
 
 
@@ -20,6 +21,7 @@ class PinInterface():
         self.enter_pin_text = Label(self.top_frame, text="Please enter your PIN\nthen press OK", font=("Courier", 15))
         self.enter_pin_field = Entry(self.top_frame, font=("Courier", 20), justify=CENTER)
 
+        photo_p = PhotoImage(file="views/assets/images/protect_pin.gif")
         self.prot_pin_labed = Label(self.left_frame, image=photo_p)
 
         self.pin_pad_1 = Button(self.center_frame, text="1", anchor=W)
@@ -44,15 +46,6 @@ class PinInterface():
 
         self.bottom_text = Label(self.bottom_frame, text="Press CORRECTION to correct an error\nPress CANCEL to return your card", font=("Courier", 15), anchor=CENTER)
 
-
-        #row config master
-        # self.master.rowconfigure(0, weight=1)
-        # self.master.rowconfigure(1, weight=1)
-        # self.master.rowconfigure(2, weight=1)
-        # self.master.rowconfigure(3, weight=1)
-        # self.master.columnconfigure(0, weight=1)
-
-
         # GRID THE TOP
         self.top_frame.rowconfigure(0, weight=1)
         self.top_frame.rowconfigure(1, weight=1)
@@ -64,7 +57,7 @@ class PinInterface():
         #GRID THE LEFT
         self.left_frame.rowconfigure(0, weight=1)
 
-        self.prot_pin_labed.grid(row=0, column=0)
+        self.prot_pin_labed.grid(row=0, column=0, sticky=NSEW)
 
         #grid the pin pad
         self.center_frame.rowconfigure(0, weight=1)
@@ -112,8 +105,7 @@ class PinInterface():
 
 if __name__ == '__main__':
     root = Tk()
-    root.geometry('650x400')
-    photo = PhotoImage(file="assets/images/protect_pin.gif")
-    PinInterface(root, photo)
+    root.geometry(str(WINDOW_WIDTH) + 'x' + str(WINDOW_HEIGHT))
+    PinInterface(root)
     mainloop()
 

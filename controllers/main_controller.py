@@ -1,6 +1,3 @@
-import sys
-sys.path.append(sys.path[0] + "/..")
-
 from views.main_interface import MainInterface
 from controllers.pin_controller import PinController
 from controllers.main_menu_controller import MainMenuController

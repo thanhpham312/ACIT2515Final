@@ -2,7 +2,7 @@ from tkinter import *
 from views.pin_interface import PinInterface
 
 class PinController():
-    def __init__(self, main_controller):
+    def __init__(self, main_controller, current_account):
         self.main_controller = main_controller
         self.pin_interface = PinInterface(main_controller.main_interface.main_interface_frame)
 

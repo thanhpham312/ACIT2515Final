@@ -5,6 +5,7 @@ class AccountModel():
     def __init__(self, file_name):
         self.__file_name = file_name
         self.__account_list = {}
+        self._load_from_file()
 
     @property
     def account_list(self):

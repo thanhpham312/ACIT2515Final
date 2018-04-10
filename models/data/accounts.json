@@ -2,9 +2,13 @@
     "account_list": {
         "1": {
             "user_id": "1",
-            "name": "John Doe",
+            "name": "Viktor",
             "type": "chequing",
+<<<<<<< HEAD
             "balance": 496.9,
+=======
+            "balance": 456.79999999999995,
+>>>>>>> c29b4fab4583c894e85d533558da52a82923c2b2
             "transaction_list": [
                 {
                     "time": "2018-04-09 18:35:27.315523",
@@ -39,7 +43,11 @@
                     "description": "Fee charged - withdraw_fee"
                 },
                 {
+<<<<<<< HEAD
                     "time": "2018-04-09 21:33:23.818375",
+=======
+                    "time": "2018-04-09 19:41:47.277459",
+>>>>>>> c29b4fab4583c894e85d533558da52a82923c2b2
                     "type": "withdrawal",
                     "balance_before": 997.0,
                     "balance_after": 497.0,
@@ -47,21 +55,51 @@
                     "description": "Withdrawal successful."
                 },
                 {
+<<<<<<< HEAD
                     "time": "2018-04-09 21:33:23.818375",
+=======
+                    "time": "2018-04-09 19:41:47.277459",
+>>>>>>> c29b4fab4583c894e85d533558da52a82923c2b2
                     "type": "transaction fee",
                     "balance_before": 497.0,
                     "balance_after": 496.9,
                     "status": "success",
                     "description": "Fee charged - overdraft_fee"
+<<<<<<< HEAD
+=======
+                },
+                {
+                    "time": "2018-04-10 00:00:04.365399",
+                    "type": "withdrawal",
+                    "balance_before": 496.9,
+                    "balance_after": 456.9,
+                    "status": "success",
+                    "description": "Withdrawal successful."
+                },
+                {
+                    "time": "2018-04-10 00:00:04.366396",
+                    "type": "transaction fee",
+                    "balance_before": 456.9,
+                    "balance_after": 456.79999999999995,
+                    "status": "success",
+                    "description": "Fee charged - overdraft_fee"
+>>>>>>> c29b4fab4583c894e85d533558da52a82923c2b2
                 }
             ]
+        },
+        "2": {
+            "user_id": "1",
+            "name": "viktor",
+            "type": "saving",
+            "balance": "1",
+            "transaction_list": []
+        },
+        "3": {
+            "user_id": "2",
+            "name": "Jane",
+            "type": "saving",
+            "balance": "20",
+            "transaction_list": []
         }
-    },
-    "2": {
-        "user_id": 1,
-        "name": "viktor",
-        "type": "saving",
-        "balance": "20",
-        "transaction_list": []
     }
 }

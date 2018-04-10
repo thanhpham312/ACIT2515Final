@@ -9,7 +9,7 @@ class Account():
         self.__type = type
         self.__balance = balance
         self.__transaction_list = transaction_list
-        self.__fees = Fee(self, 'data/fees.json')
+        self.__fees = Fee(self, './models/data/fees.json')
 
     @property
     def id(self):

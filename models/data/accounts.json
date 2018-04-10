@@ -4,7 +4,7 @@
             "user_id": "1",
             "name": "John Doe",
             "type": "chequing",
-            "balance": 997.0,
+            "balance": 496.9,
             "transaction_list": [
                 {
                     "time": "2018-04-09 18:35:27.315523",
@@ -37,15 +37,38 @@
                     "balance_after": 997.0,
                     "status": "success",
                     "description": "Fee charged - withdraw_fee"
+                },
+                {
+                    "time": "2018-04-09 19:41:47.277459",
+                    "type": "withdrawal",
+                    "balance_before": 997.0,
+                    "balance_after": 497.0,
+                    "status": "success",
+                    "description": "Withdrawal successful."
+                },
+                {
+                    "time": "2018-04-09 19:41:47.277459",
+                    "type": "transaction fee",
+                    "balance_before": 497.0,
+                    "balance_after": 496.9,
+                    "status": "success",
+                    "description": "Fee charged - overdraft_fee"
                 }
             ]
+        },
+        "2": {
+            "user_id": "1",
+            "name": "viktor",
+            "type": "saving",
+            "balance": "20",
+            "transaction_list": []
+        },
+        "3": {
+            "user_id": "2",
+            "name": "Jane",
+            "type": "saving",
+            "balance": "20",
+            "transaction_list": []
         }
-    },
-    "2": {
-        "user_id": 1,
-        "name": "viktor",
-        "type": "saving",
-        "balance": "20",
-        "transaction_list": []
     }
 }

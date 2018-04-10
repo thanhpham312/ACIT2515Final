@@ -18,7 +18,7 @@ class CLIModelController():
         balance = input('Input a balance:\n')
 
         new_account = {
-            "user_id": user_id,
+            "user_id": str(user_id),
             "name": name,
             "type": 'normal',
             "balance": balance,

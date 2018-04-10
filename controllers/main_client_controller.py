@@ -6,6 +6,7 @@ from controllers.withdraw_controller import WithdrawController
 from controllers.deposit_controller import DepositController
 from controllers.check_balance_controller import CheckBalanceController
 from controllers.card_input_controller import CardInputController
+from controllers.account_type_check_controller import AccountTypeCheckController
 
 from models.user_model_for_client import UserModelForClient
 from models.account_model_for_client import AccountModelForClient
@@ -38,3 +39,11 @@ class MainClientController():
             self.current_interface_controller = CheckBalanceController(self, self.current_account_model)
         elif controller == 'card_input':
             self.current_interface_controller = CardInputController(self, self.current_account_model)
+        elif controller == 'account_type_check':
+            self.current_interface_controller = AccountTypeCheckController(self, self.current_account_model)
+
+    def reset_session(self):
+        self.current_interface_controller = None
+        self.current_user_model = None
+        self.current_account_model = None
+        self.change_controller('card_input')

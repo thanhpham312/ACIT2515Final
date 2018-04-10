@@ -11,21 +11,23 @@ class AccountModelForClient(AccountModel):
     def current_account(self):
         return self.__current_account
 
-    def _set_current_account(self, user_id):
-        account_id = "0"
+    def _set_current_account(self, user_id, type):
+        current_user_account_list = {}
         for id, account_object in self.account_list["account_list"].items():
             if account_object['user_id'] == user_id:
-                account_id = str(id)
-                break
-        if account_id != "0" and account_id in self.account_list["account_list"]:
-            print('sadffg')
-            current_account = self.account_list["account_list"][account_id]
-            if current_account['type'] == 'chequing':
-                self.__current_account = ChequingAccount(account_id, current_account['name'], current_account['type'], current_account['balance'],
+                current_user_account_list[account_object['type']] = {
+                    "account_id": id,
+                    "account_object": account_object
+                }
+        if type == 'chequing' and type in current_user_account_list:
+            account_id = current_user_account_list['chequing']['account_id']
+            current_account = current_user_account_list['chequing']['account_object']
+            self.__current_account = ChequingAccount(account_id, current_account['name'], current_account['type'], current_account['balance'],
                                                        current_account['transaction_list'])
-                print(self.current_account)
-            elif current_account['type'] == 'saving':
-                self.__current_account = SavingAccount(account_id, current_account['name'], current_account['type'], current_account['balance'],
+        elif type == 'saving' and type in current_user_account_list:
+            account_id = current_user_account_list['saving']['account_id']
+            current_account = current_user_account_list['saving']['account_object']
+            self.__current_account = SavingAccount(account_id, current_account['name'], current_account['type'], current_account['balance'],
                                                        current_account['transaction_list'])
 
     def _update_current_account(self):

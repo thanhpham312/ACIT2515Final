@@ -4,17 +4,48 @@
             "user_id": "1",
             "name": "John Doe",
             "type": "chequing",
-            "balance": 498.5,
+            "balance": 997.0,
             "transaction_list": [
                 {
-                    "time": "2018-04-09 18:18:03.817470",
+                    "time": "2018-04-09 18:35:27.315523",
+                    "type": "withdrawal",
+                    "balance_before": 2000,
+                    "balance_after": 1500,
+                    "status": "success",
+                    "description": "Withdrawal successful."
+                },
+                {
+                    "time": "2018-04-09 18:35:27.315523",
                     "type": "transaction fee",
-                    "balance_before": 500,
-                    "balance_after": 498.5,
+                    "balance_before": 1500,
+                    "balance_after": 1498.5,
+                    "status": "success",
+                    "description": "Fee charged - withdraw_fee"
+                },
+                {
+                    "time": "2018-04-09 19:32:39.021140",
+                    "type": "withdrawal",
+                    "balance_before": 1498.5,
+                    "balance_after": 998.5,
+                    "status": "success",
+                    "description": "Withdrawal successful."
+                },
+                {
+                    "time": "2018-04-09 19:32:39.021140",
+                    "type": "transaction fee",
+                    "balance_before": 998.5,
+                    "balance_after": 997.0,
                     "status": "success",
                     "description": "Fee charged - withdraw_fee"
                 }
             ]
         }
+    },
+    "2": {
+        "user_id": 1,
+        "name": "viktor",
+        "type": "saving",
+        "balance": "20",
+        "transaction_list": []
     }
 }

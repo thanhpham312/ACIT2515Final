@@ -25,8 +25,8 @@ class Fee():
                                       transaction_description)
             self.__account.transaction_list.append(transaction.to_dict())
 
-        elif self.__fee_list[fee_type].type == "percentage":
-            self.__account.balance -= self.__account.balance.self.__fee_list[fee_type]['amount']
+        elif self.__fee_list[fee_type]['type'] == "percentage":
+            self.__account.balance -= self.__fee_list[fee_type]['amount']
             transaction = Transaction(self.__account, datetime.datetime.now(), "transaction fee",
                                       before_balance, self.__account.balance, "success",
                                       transaction_description)

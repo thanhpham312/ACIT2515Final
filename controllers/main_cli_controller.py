@@ -35,13 +35,19 @@ class CLIModelController():
         self._account_model._save_to_file()
 
     def _delete_account(self, account_id):
-        pass
+        self._account_model.account_list['account_list'].pop(account_id)
+        self._account_model._save_to_file()
 
-    def _change_account_holder_name(self):
-        pass
+    def _change_account_holder_name(self,id,new_holder_name):
+        #print(self._account_model.account_list)
+        # print(self._account_model.account_list[id]['name'])
+        self._account_model.account_list['account_list'][id]['name'] = new_holder_name
+        self._account_model._save_to_file()
 
-    def _view_account_transaction_log(self):
-        pass
+    def _view_account_transaction_log(self,id):
+        trans_list = self._account_model.account_list['account_list'][id]['transaction_list']
+        for transaction in trans_list:
+            print(transaction)
 
 if __name__ == '__main__':
     pass

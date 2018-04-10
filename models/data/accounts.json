@@ -4,101 +4,14 @@
             "user_id": "1",
             "name": "Viktor",
             "type": "chequing",
-<<<<<<< HEAD
-            "balance": 496.9,
-=======
-            "balance": 456.79999999999995,
->>>>>>> c29b4fab4583c894e85d533558da52a82923c2b2
-            "transaction_list": [
-                {
-                    "time": "2018-04-09 18:35:27.315523",
-                    "type": "withdrawal",
-                    "balance_before": 2000,
-                    "balance_after": 1500,
-                    "status": "success",
-                    "description": "Withdrawal successful."
-                },
-                {
-                    "time": "2018-04-09 18:35:27.315523",
-                    "type": "transaction fee",
-                    "balance_before": 1500,
-                    "balance_after": 1498.5,
-                    "status": "success",
-                    "description": "Fee charged - withdraw_fee"
-                },
-                {
-                    "time": "2018-04-09 19:32:39.021140",
-                    "type": "withdrawal",
-                    "balance_before": 1498.5,
-                    "balance_after": 998.5,
-                    "status": "success",
-                    "description": "Withdrawal successful."
-                },
-                {
-                    "time": "2018-04-09 19:32:39.021140",
-                    "type": "transaction fee",
-                    "balance_before": 998.5,
-                    "balance_after": 997.0,
-                    "status": "success",
-                    "description": "Fee charged - withdraw_fee"
-                },
-                {
-<<<<<<< HEAD
-                    "time": "2018-04-09 21:33:23.818375",
-=======
-                    "time": "2018-04-09 19:41:47.277459",
->>>>>>> c29b4fab4583c894e85d533558da52a82923c2b2
-                    "type": "withdrawal",
-                    "balance_before": 997.0,
-                    "balance_after": 497.0,
-                    "status": "success",
-                    "description": "Withdrawal successful."
-                },
-                {
-<<<<<<< HEAD
-                    "time": "2018-04-09 21:33:23.818375",
-=======
-                    "time": "2018-04-09 19:41:47.277459",
->>>>>>> c29b4fab4583c894e85d533558da52a82923c2b2
-                    "type": "transaction fee",
-                    "balance_before": 497.0,
-                    "balance_after": 496.9,
-                    "status": "success",
-                    "description": "Fee charged - overdraft_fee"
-<<<<<<< HEAD
-=======
-                },
-                {
-                    "time": "2018-04-10 00:00:04.365399",
-                    "type": "withdrawal",
-                    "balance_before": 496.9,
-                    "balance_after": 456.9,
-                    "status": "success",
-                    "description": "Withdrawal successful."
-                },
-                {
-                    "time": "2018-04-10 00:00:04.366396",
-                    "type": "transaction fee",
-                    "balance_before": 456.9,
-                    "balance_after": 456.79999999999995,
-                    "status": "success",
-                    "description": "Fee charged - overdraft_fee"
->>>>>>> c29b4fab4583c894e85d533558da52a82923c2b2
-                }
-            ]
-        },
-        "2": {
-            "user_id": "1",
-            "name": "viktor",
-            "type": "saving",
-            "balance": "1",
+            "balance": 2000,
             "transaction_list": []
         },
         "3": {
             "user_id": "2",
             "name": "Jane",
             "type": "saving",
-            "balance": "20",
+            "balance": 200,
             "transaction_list": []
         }
     }

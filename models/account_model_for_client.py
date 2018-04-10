@@ -11,9 +11,13 @@ class AccountModelForClient(AccountModel):
     def current_account(self):
         return self.__current_account
 
-    def _set_current_account(self, account_id):
-        account_id = str(account_id)
-        if account_id in self.account_list["account_list"]:
+    def _set_current_account(self, user_id):
+        account_id = "0"
+        for id, account_object in self.account_list["account_list"].items():
+            if account_object['user_id'] == user_id:
+                account_id = str(id)
+        if account_id != "0" and account_id in self.account_list["account_list"]:
+            print('sadffg')
             current_account = self.account_list["account_list"][account_id]
             if current_account['type'] == 'chequing':
                 self.__current_account = ChequingAccount(account_id, current_account['name'], current_account['type'], current_account['balance'],

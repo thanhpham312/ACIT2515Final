@@ -31,3 +31,13 @@ class Transaction():
     @property
     def description(self):
         return self.__description
+
+    def to_dict(self):
+        return {
+          "time": str(self.__time),
+          "type": self.__type,
+          "balance_before": self.__balance_before,
+          "balance_after": self.__balance_after,
+          "status": self.__status,
+          "description": self.__description
+        }

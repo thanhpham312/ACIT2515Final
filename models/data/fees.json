@@ -1,0 +1,18 @@
+{
+  "chequing": {
+    "withdraw_fee": {
+      "type": "set_amount",
+      "amount": 1.5
+    },
+    "overdraft_fee": {
+      "type": "percentage",
+      "amount": 0.1
+    }
+  },
+  "saving": {
+    "withdraw_fee": {
+      "type": "set_amount",
+      "amount": 3.0
+    }
+  }
+}

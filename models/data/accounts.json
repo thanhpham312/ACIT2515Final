@@ -76,14 +76,14 @@
             "user_id": "1",
             "name": "viktor",
             "type": "saving",
-            "balance": "1",
+            "balance": 1,
             "transaction_list": []
         },
         "3": {
             "user_id": "2",
             "name": "Jane",
             "type": "saving",
-            "balance": "20",
+            "balance": 20,
             "transaction_list": []
         }
     }

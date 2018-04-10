@@ -16,6 +16,7 @@ class AccountModelForClient(AccountModel):
         for id, account_object in self.account_list["account_list"].items():
             if account_object['user_id'] == user_id:
                 account_id = str(id)
+                break
         if account_id != "0" and account_id in self.account_list["account_list"]:
             print('sadffg')
             current_account = self.account_list["account_list"][account_id]

@@ -15,7 +15,15 @@ class CLIModelController():
             type = input('Set the account type\n\t1: chequing\n\t2: saving')
             if type == "1" or type == "2":
                 break
-        balance = input('Input a balance:\n')
+            else:
+                print('Invalid option!\n')
+        while 1:
+            try:
+                balance = float(input('Input a balance:\n'))
+                break
+            except ValueError:
+                print('Please input a float or int\n')
+
 
         new_account = {
             "user_id": str(user_id),
@@ -31,7 +39,7 @@ class CLIModelController():
             new_account['type'] = 'saving'
 
 
-        self._account_model.account_list[id] = new_account
+        self._account_model.account_list['account_list'][id] = new_account
         self._account_model._save_to_file()
 
     def _delete_account(self, account_id):

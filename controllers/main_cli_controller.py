@@ -87,7 +87,7 @@ class CLIModelController():
     def _change_account_holder_name(self,id,new_holder_name):
         try:
             #print(self._account_model.account_list)
-            print(self._account_model.account_list["customers"][id]["username"])
+            print(self._account_model.account_list)
             # self._account_model.account_list['customers'][id]['username'] = new_holder_name
             # self._account_model._save_to_file()
         except:

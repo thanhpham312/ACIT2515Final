@@ -9,7 +9,7 @@ class Account():
         self.__type = type
         self.__balance = balance
         self.__transaction_list = transaction_list
-        self.__fees = Fee(self, './models/data/fees.json')
+        self.__fees = Fee(self, 'models/data/fees.json')
 
     @property
     def id(self):
@@ -140,7 +140,7 @@ class SavingAccount(Account):
                 transaction_description = "Failed to withdraw money, balance not enough."
                 transaction = Transaction(self, datetime.datetime.now(), "withdrawal", self.balance, self.balance, "failed",
                                           transaction_description)
-                self.__transaction_list.append(transaction.to_dict())
+                self.transaction_list.append(transaction.to_dict())
                 return False
             else:
                 balance_before = self.balance
@@ -148,7 +148,7 @@ class SavingAccount(Account):
                 transaction_description = "Withdrawal successful."
                 transaction = Transaction(self, datetime.datetime.now(), "withdrawal", balance_before, self.balance, "success",
                                           transaction_description)
-                self.__transaction_list.append(transaction.to_dict())
+                self.transaction_list.append(transaction.to_dict())
 
                 self.fees._charge_fee("withdraw_fee")
                 return True
@@ -157,5 +157,5 @@ class SavingAccount(Account):
             transaction = Transaction(self, datetime.datetime.now(), "withdrawal", self.balance, self.balance,
                                       "failed",
                                       transaction_description)
-            self.__transaction_list.append(transaction.to_dict())
+            self.transaction_list.append(transaction.to_dict())
             return False

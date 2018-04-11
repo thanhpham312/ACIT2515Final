@@ -43,6 +43,6 @@ class AccountModelForClient(AccountModel):
 if __name__ == '__main__':
     account_model = AccountModelForClient('data/accounts.json')
     account_model._load_from_file()
-    account_model._set_current_account(1,"saving")
+    account_model._set_current_account("1","saving")
     account_model.current_account.withdraw(500)
     account_model._update_current_account()

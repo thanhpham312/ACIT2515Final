@@ -1,16 +1,42 @@
 import json
 from json import JSONEncoder
 import hashlib
+import sys
 from models.account_model_for_cli import AccountModel
 
 class CLIModelController():
+    __USERID = 1000
     def __init__(self, file_name):
         self._account_model = AccountModel(file_name)
         self._account_model._load_from_file()
 
-    def _add_new_account(self, user_id):
-        id = str(len(self._account_model.account_list) + 1)
+    def check_input(self):
+        what_to_do = 0
+        while what_to_do != "5":
+            print("Welcome")
+            print("1: Add new account")
+            print("2: Change account holder name")
+            print("3: View transaction log")
+            print("4: Delete account")
+            print("5: Exit")
+            if what_to_do == "1":
+                self._add_new_account()
+            elif what_to_do == "2":
+                id = input("Enter id of the user: ")
+                new_name = input("Enter the new name of the user to change the holder name: ")
+                self._change_account_holder_name(id, new_name)
+            elif what_to_do == "3":
+                id = input("Enter id of the user to view transactions: ")
+                self._view_account_transaction_log(id)
+            elif what_to_do == "4":
+                id = input("Enter id of the user to delete it: ")
+                self._delete_account(id)
+
+    def _add_new_account(self):
+        # id = str(len(self._account_model.account_list) + 1)
+        id = CLIModelController.__USERID+1
         name = input('Type in a new account holder name:\n')
+        password = input('Type in a new account password:\n')
         while 1:
             type = input('Set the account type\n\t1: chequing\n\t2: saving')
             if type == "1" or type == "2":
@@ -24,38 +50,56 @@ class CLIModelController():
             except ValueError:
                 print('Please input a float or int\n')
 
-
+        new_id = {
+            "id": id
+        }
         new_account = {
-            "user_id": str(user_id),
             "name": name,
-            "type": 'normal',
-            "balance": balance,
+            "password": password
+        }
+        acc_type = ""
+        if type == "1":
+            acc_type = {
+                type: 'chequing'
+            }
+        elif type == "2":
+            acc_type = {
+                type: 'saving'
+            }
+        trans_list = {
             "transaction_list": []
         }
 
-        if type == "1":
-            new_account['type'] = 'chequing'
-        elif type == "2":
-            new_account['type'] = 'saving'
 
-
-        self._account_model.account_list['account_list'][id] = new_account
+        self._account_model.account_list['customers']= new_id
+        self._account_model.account_list['customers'][new_id] = new_account
+        self._account_model.account_list['customers'][new_id][new_account] = acc_type
+        self._account_model.account_list['customers'][new_id][new_account][acc_type] = trans_list
         self._account_model._save_to_file()
 
     def _delete_account(self, account_id):
-        self._account_model.account_list['account_list'].pop(account_id)
-        self._account_model._save_to_file()
+        try:
+            self._account_model.account_list['customers'].pop(account_id)
+            self._account_model._save_to_file()
+        except:
+            print('No account found')
 
     def _change_account_holder_name(self,id,new_holder_name):
-        #print(self._account_model.account_list)
-        # print(self._account_model.account_list[id]['name'])
-        self._account_model.account_list['account_list'][id]['name'] = new_holder_name
-        self._account_model._save_to_file()
+        try:
+            #print(self._account_model.account_list)
+            print(self._account_model.account_list["customers"][id]["username"])
+            # self._account_model.account_list['customers'][id]['username'] = new_holder_name
+            # self._account_model._save_to_file()
+        except:
+            print('No account found')
 
     def _view_account_transaction_log(self,id):
-        trans_list = self._account_model.account_list['account_list'][id]['transaction_list']
-        for transaction in trans_list:
-            print(transaction)
+        try:
+            trans_list = self._account_model.account_list['account_list'][id]['transaction_list']
+            for transaction in trans_list:
+                print(transaction["time"]+' '+transaction["type"]+' '+transaction["balance_before"]+' '+transaction["balance_after"]+' '+transaction["status"]+' '+transaction["description"])
+        except:
+            print('No account found')
 
 if __name__ == '__main__':
     pass

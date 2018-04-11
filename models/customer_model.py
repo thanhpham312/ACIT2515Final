@@ -39,16 +39,18 @@ class CustomerModel():
 
     @current_account.setter
     def current_account(self, account):
-        self.__customer_account_dict = account
+        self.__current_account = account
 
     def _load_from_file(self):
         with open(self.__file_name, 'r') as f:
             return json.load(f)
 
     def _save_to_file(self):
+        customer_dict = {}
         self.customer_account_dict[self.current_account.type] = self.current_account._to_dict()
-        with open(self.__file_name, 'rw') as f:
+        with open(self.__file_name, 'r') as f:
             customer_dict = json.load(f)
+        with open(self.__file_name, 'w') as f:
             customer_dict[self.customer_id]['accounts'] = self.customer_account_dict
             json.dump(customer_dict, f, indent=2)
 
@@ -56,7 +58,7 @@ class CustomerModel():
         customers_dict = self._load_from_file()
         if self.customer_id in customers_dict:
             self.customer_name = customers_dict[self.customer_id]['name']
-            self.customer_account_dict = customers_dict[self.customer_id['accounts']]
+            self.customer_account_dict = customers_dict[self.customer_id]['accounts']
 
 
     def _set_current_account(self, account_type):
@@ -73,6 +75,12 @@ class CustomerModel():
 
 
 if __name__ == '__main__':
-    pass
+    new_customer_model = CustomerModel('data/accounts.json', "1")
+    new_customer_model._load_customer()
+    new_customer_model._set_current_account('chequing')
+    print(new_customer_model.current_account)
+    new_customer_model.current_account.withdraw(500)
+    new_customer_model._save_to_file()
+
 
 

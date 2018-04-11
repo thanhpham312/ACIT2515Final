@@ -7,7 +7,7 @@ class Account():
         self.__type = type
         self.__balance = balance
         self.__transaction_list = transaction_list
-        self.__fees = Fee(self, 'models/data/fees.json')
+        self.__fees = Fee(self, 'data/fees.json')
 
     @property
     def type(self):
@@ -83,7 +83,7 @@ class Account():
         }
 
     def __str__(self):
-        return "account_id: {}\nname: {}\ntype: {}\nbalance: {}\ntransaction_list: {}".format(self.id, self.name, self.type, self.balance, self.transaction_list)
+        return "type: {}\nbalance: {}\ntransaction_list: {}".format(self.type, self.balance, self.transaction_list)
 
 class ChequingAccount(Account):
     def __init__(self, type="chequing", balance=0, transaction_list=[]):

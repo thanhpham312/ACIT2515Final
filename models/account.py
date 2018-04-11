@@ -1,23 +1,13 @@
 import datetime
-from models.data.transaction import Transaction
-from models.data.fee import Fee
+from models.transaction import Transaction
+from models.fee import Fee
 
 class Account():
-    def __init__(self, id, name, type="normal", balance=0, transaction_list=[]):
-        self.__id = id
-        self.__name = name
+    def __init__(self, type="normal", balance=0, transaction_list=[]):
         self.__type = type
         self.__balance = balance
         self.__transaction_list = transaction_list
         self.__fees = Fee(self, './models/data/fees.json')
-
-    @property
-    def id(self):
-        return self.__id
-
-    @property
-    def name(self):
-        return self.__name
 
     @property
     def type(self):
@@ -90,8 +80,8 @@ class Account():
         return "account_id: {}\nname: {}\ntype: {}\nbalance: {}\ntransaction_list: {}".format(self.id, self.name, self.type, self.balance, self.transaction_list)
 
 class ChequingAccount(Account):
-    def __init__(self, id, name, type="chequing", balance=0, transaction_list=[]):
-        super().__init__(id, name, type, balance, transaction_list)
+    def __init__(self, type="chequing", balance=0, transaction_list=[]):
+        super().__init__(type, balance, transaction_list)
         self.__overdraft = -500.0
 
     def withdraw(self, withdraw_amount):
@@ -130,9 +120,9 @@ class ChequingAccount(Account):
             self.transaction_list.append(transaction.to_dict())
             return False
 
-class SavingAccount(Account):
+class SavingsAccount(Account):
     def __init__(self, id, name, type="saving", balance=0, transaction_list=[]):
-        super().__init__(id, name, type, balance, transaction_list)
+        super().__init__(type, balance, transaction_list)
 
     def withdraw(self, withdraw_amount):
         if withdraw_amount > 0:

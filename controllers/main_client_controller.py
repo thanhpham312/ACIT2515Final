@@ -9,7 +9,7 @@ from controllers.card_input_controller import CardInputController
 from controllers.account_type_check_controller import AccountTypeCheckController
 
 from models.user_model_for_client import UserModelForClient
-from models.account_model_for_client import AccountModelForClient
+from models.account_model_for_client import CustomerModelForClient
 
 class MainClientController():
     def __init__(self, root):

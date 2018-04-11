@@ -1,5 +1,5 @@
 import json
-from models.data.user import User
+
 
 class UserModel():
     def __init__(self, file_name):

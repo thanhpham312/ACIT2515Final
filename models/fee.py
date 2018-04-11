@@ -1,6 +1,6 @@
 import json
 import datetime
-from models.data.transaction import Transaction
+from models.transaction import Transaction
 
 class Fee():
     def __init__(self, account, file_name):

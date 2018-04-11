@@ -8,16 +8,14 @@ from controllers.check_balance_controller import CheckBalanceController
 from controllers.card_input_controller import CardInputController
 from controllers.account_type_check_controller import AccountTypeCheckController
 
-from models.user_model_for_client import UserModelForClient
-from models.account_model_for_client import CustomerModelForClient
+from models.customer_model import CustomerModel
 
 class MainClientController():
     def __init__(self, root):
         self.root = root
         self.main_interface = MainInterface(self.root)
         self.current_interface_controller = None
-        self.current_user_model = None
-        self.current_account_model = None
+        self.customer_model = None
         # self.current_user = UserModelForClient(user_file_name, username, password)
         # self.current_account = AccountModelForClient(account_file_name)
         # self.current_account._set_current_account(self.current_user.current_user_id)
@@ -26,21 +24,21 @@ class MainClientController():
         self.main_interface.redraw_main_interface_frame()
         del self.current_interface_controller
         if controller == 'pin':
-            self.current_interface_controller = PinController(self, self.current_account_model)
+            self.current_interface_controller = PinController(self, self.customer_model)
         elif controller == 'main_menu':
-            self.current_interface_controller = MainMenuController(self, self.current_account_model)
+            self.current_interface_controller = MainMenuController(self, self.customer_model)
         elif controller == 'quick_cash':
-            self.current_interface_controller = QuickCashController(self, self.current_account_model)
+            self.current_interface_controller = QuickCashController(self, self.customer_model)
         elif controller == 'withdraw':
-            self.current_interface_controller = WithdrawController(self, self.current_account_model)
+            self.current_interface_controller = WithdrawController(self, self.customer_model)
         elif controller == 'deposit':
-            self.current_interface_controller = DepositController(self, self.current_account_model)
+            self.current_interface_controller = DepositController(self, self.customer_model)
         elif controller == 'check_balance':
-            self.current_interface_controller = CheckBalanceController(self, self.current_account_model)
+            self.current_interface_controller = CheckBalanceController(self, self.customer_model)
         elif controller == 'card_input':
-            self.current_interface_controller = CardInputController(self, self.current_account_model)
+            self.current_interface_controller = CardInputController(self, self.customer_model)
         elif controller == 'account_type_check':
-            self.current_interface_controller = AccountTypeCheckController(self, self.current_account_model)
+            self.current_interface_controller = AccountTypeCheckController(self, self.customer_model)
 
     def reset_session(self):
         self.current_interface_controller = None

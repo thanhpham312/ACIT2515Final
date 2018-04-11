@@ -2,9 +2,11 @@ import json
 from models.account import ChequingAccount, SavingsAccount
 
 class CustomerModel():
-    def __init__(self, file_name, customer_id):
+    def __init__(self, file_name, card_number, pin):
+        self.__card_number = card_number
+        self.__pin = pin
         self.__file_name = file_name
-        self.__customer_id = customer_id
+        self.__customer_id = None
         self.__customer_name = None
         self.__customer_account_dict = {}
         self.__current_account = None
@@ -56,6 +58,11 @@ class CustomerModel():
 
     def _load_customer(self):
         customers_dict = self._load_from_file()
+        print(customers_dict.values())
+        for customer_id, customer_object in customers_dict.items():
+            print(customer_object)
+            if self.__card_number == customer_object['card_number'] and self.__pin == customer_object['pin']:
+                self.customer_id = customer_id
         if self.customer_id in customers_dict:
             self.customer_name = customers_dict[self.customer_id]['name']
             self.customer_account_dict = customers_dict[self.customer_id]['accounts']

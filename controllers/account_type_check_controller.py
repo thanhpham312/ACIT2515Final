@@ -13,8 +13,8 @@ class AccountTypeCheckController():
                                                                         self.select_account('chequing'))
 
     def select_account(self, type):
-        self.main_controller.current_account_model._set_current_account(self.main_controller.current_user_model.current_user_id, type)
-        if self.main_controller.current_account_model.current_account != None:
+        self.main_controller.customer_model._set_current_account(type)
+        if self.main_controller.customer_model.current_account != None:
             self.main_controller.change_controller('main_menu')
         else:
             messagebox.showwarning("Error", "You don't have a {} account.\nPlease select another one.".format(type))

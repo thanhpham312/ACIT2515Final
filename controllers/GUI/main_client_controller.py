@@ -20,7 +20,7 @@ class MainClientController():
         # self.current_account = AccountModelForClient(account_file_name)
         # self.current_account._set_current_account(self.current_user.current_user_id)
 
-    def change_controller(self, controller):
+    def change_controller(self, controller, next_screen = None):
         self.main_interface.redraw_main_interface_frame()
         del self.current_interface_controller
         if controller == 'pin':
@@ -37,8 +37,8 @@ class MainClientController():
             self.current_interface_controller = CheckBalanceController(self)
         elif controller == 'card_input':
             self.current_interface_controller = CardInputController(self)
-        elif controller == 'account_type_check':
-            self.current_interface_controller = AccountChoiceController(self)
+        elif controller == 'account_choice':
+            self.current_interface_controller = AccountChoiceController(self, next_screen)
 
     def reset_session(self):
         self.current_interface_controller = None

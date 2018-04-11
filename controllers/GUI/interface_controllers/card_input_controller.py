@@ -16,7 +16,7 @@ class CardInputController():
             self.main_controller.customer_model = CustomerModelForClient('./models/data/customers.json', self.card_input_interface.card_entry.get(), self.card_input_interface.pin_entry.get())
             self.main_controller.customer_model._load_customer()
             if self.main_controller.customer_model.customer_id != None:
-                self.main_controller.change_controller('account_type_check')
+                self.main_controller.change_controller('main_menu')
             else:
                 messagebox.showwarning("Error", "The account information you entered is incorrect.\nPlease try again.")
         else:

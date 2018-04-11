@@ -11,4 +11,4 @@ class CheckBalanceController():
         self.check_balance_interface.button2.bind('<Button-1>', lambda event:
             self.main_controller.change_controller('main_menu'))
 
-        self.check_balance_interface.label2.config(text=self.current_account.current_account.balance)
+        self.check_balance_interface.label2.config(text=self.main_controller.customer_model.current_account.balance)

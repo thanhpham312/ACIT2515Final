@@ -6,7 +6,7 @@
     "name": "Viktor",
     "accounts": {
       "chequing": {
-        "balance": 1415.5,
+        "balance": 1374.0,
         "transactions": [
           {
             "time": "2018-04-10 19:47:47.074635",
@@ -53,6 +53,22 @@
             "type": "transaction fee",
             "balance_before": 1417.0,
             "balance_after": 1415.5,
+            "status": "success",
+            "description": "Fee charged - withdraw_fee"
+          },
+          {
+            "time": "2018-04-11 12:19:05.399627",
+            "type": "withdrawal",
+            "balance_before": 1415.5,
+            "balance_after": 1375.5,
+            "status": "succeeded",
+            "description": "Withdrawal succeeded."
+          },
+          {
+            "time": "2018-04-11 12:19:05.399627",
+            "type": "transaction fee",
+            "balance_before": 1375.5,
+            "balance_after": 1374.0,
             "status": "success",
             "description": "Fee charged - withdraw_fee"
           }

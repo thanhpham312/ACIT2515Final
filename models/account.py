@@ -76,6 +76,12 @@ class Account():
             self.transaction_list.append(transaction.to_dict())
             return False
 
+    def _to_dict(self):
+        return {
+            "balance": self.balance,
+            "transactions": self.transaction_list
+        }
+
     def __str__(self):
         return "account_id: {}\nname: {}\ntype: {}\nbalance: {}\ntransaction_list: {}".format(self.id, self.name, self.type, self.balance, self.transaction_list)
 

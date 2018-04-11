@@ -5,10 +5,11 @@ class CheckBalanceController():
         self.main_controller = main_controller
         main_controller.main_interface.master.title('Check Balance')
         self.check_balance_interface = CheckBalanceInterface(main_controller.main_interface.main_interface_frame)
-        
-        self.check_balance_interface.button1.bind('<Button-1>', lambda event:
-            self.main_controller.change_controller('main_menu'))
-        self.check_balance_interface.button2.bind('<Button-1>', lambda event:
-            self.main_controller.change_controller('main_menu'))
 
-        self.check_balance_interface.label2.config(text=self.main_controller.customer_model.current_account.balance)
+        # self.check_balance_interface.button1.config()
+        self.check_balance_interface.button2.config(command=self.ok)
+
+        self.check_balance_interface.label2.config(text='${}'.format(self.main_controller.customer_model.current_account.balance))
+
+    def ok(self):
+        self.main_controller.change_controller('confirm', message='Transaction completed')

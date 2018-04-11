@@ -1,3 +1,4 @@
+from tkinter import *
 from tkinter import messagebox
 from views.GUI.card_input_interface import CardInputInterface
 from models.customer_model import CustomerModelForClient
@@ -8,7 +9,7 @@ class CardInputController():
         main_controller.main_interface.master.title('Enter Card Number')
         self.card_input_interface = CardInputInterface(main_controller.main_interface.main_interface_frame)
 
-        self.card_input_interface.bottom_cancel_button.config(command=exit)
+        self.card_input_interface.bottom_cancel_button.config(command=self.main_controller.reset)
         self.card_input_interface.bottom_continue_button.config(command=self.log_in)
 
     def log_in(self):

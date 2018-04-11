@@ -23,7 +23,7 @@ class Fee():
 
     def _charge_fee(self, fee_type):
         before_balance = self.__account.balance
-        transaction_description = "Fee charged - " + fee_type
+        transaction_description = "Fee charged - " + fee_type + '.'
         if self.__fee_list[fee_type]['type'] == "set_amount":
             self.__account.balance -= self.__fee_list[fee_type]['amount']
             transaction = Transaction(self.__account, datetime.datetime.now(), "transaction fee",

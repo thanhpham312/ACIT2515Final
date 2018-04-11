@@ -13,7 +13,7 @@ class QuickCashController():
         if self.main_controller.customer_model.current_account.withdraw(amount) == True:
             messagebox.showwarning('Success', 'You have withdrawn {} from your account'.format(amount))
             self.main_controller.customer_model._save_to_file()
-            self.main_controller.reset_session()
+            self.main_controller.reset()
         else:
             messagebox.showwarning('Failed', 'You do not have enough money for this transaction')
-            self.main_controller.reset_session()
+            self.main_controller.reset()

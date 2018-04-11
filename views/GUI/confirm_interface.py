@@ -46,8 +46,8 @@ class ConfirmInterface():
 
         self.top_label.grid(row=0, column=0, sticky=NSEW, padx=10, pady=10)
         self.middle_label.grid(row=0, column=0, sticky=NSEW, padx=20, pady=(0, 20))
-        self.bottom_yes_button.grid(row=0, column=0, sticky=NSEW, padx=(10,50), pady=20)
-        self.bottom_no_button.grid(row=0, column=1, sticky=NSEW, padx=(50,10), pady=20)
+        self.bottom_no_button.grid(row=0, column=0, sticky=NSEW, padx=(50, 10), pady=20)
+        self.bottom_yes_button.grid(row=0, column=1, sticky=NSEW, padx=(10,50), pady=20)
 
 
 if __name__ == '__main__':

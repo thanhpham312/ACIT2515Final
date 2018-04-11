@@ -7,6 +7,7 @@ from controllers.GUI.interface_controllers.deposit_controller import DepositCont
 from controllers.GUI.interface_controllers.check_balance_controller import CheckBalanceController
 from controllers.GUI.interface_controllers.card_input_controller import CardInputController
 from controllers.GUI.interface_controllers.account_choice_controller import AccountChoiceController
+from controllers.GUI.interface_controllers.confirm_controller import ConfirmController
 
 
 class MainClientController():
@@ -20,7 +21,7 @@ class MainClientController():
         # self.current_account = AccountModelForClient(account_file_name)
         # self.current_account._set_current_account(self.current_user.current_user_id)
 
-    def change_controller(self, controller, next_screen = None):
+    def change_controller(self, controller, next_screen = None, message=''):
         self.main_interface.redraw_main_interface_frame()
         del self.current_interface_controller
         if controller == 'pin':
@@ -39,9 +40,16 @@ class MainClientController():
             self.current_interface_controller = CardInputController(self)
         elif controller == 'account_choice':
             self.current_interface_controller = AccountChoiceController(self, next_screen)
+        elif controller == 'confirm':
+            self.current_interface_controller = ConfirmController(self, message)
 
-    def reset_session(self):
+    def reset(self):
         self.current_interface_controller = None
         self.current_user_model = None
         self.current_account_model = None
         self.change_controller('card_input')
+
+    def reset_session(self):
+        self.current_interface_controller = None
+        self.current_account_model = None
+        self.change_controller('main_menu')

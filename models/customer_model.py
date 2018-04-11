@@ -2,13 +2,33 @@ import json
 from models.account import ChequingAccount, SavingsAccount
 
 class CustomerModel():
+    def __init__(self, file_name):
+        self.__file_name = file_name
+        self.__customer_account_dict = {}
+
+    @property
+    def customer_account_dict(self):
+        return self.__customer_account_dict
+
+    @customer_account_dict.setter
+    def customer_account_dict(self, account_dict):
+        self.__customer_account_dict = account_dict
+
+    def _load_from_file(self):
+        with open(self.__file_name, 'r') as f:
+            return json.load(f)
+
+    def _save_to_file(self):
+        with open(self.__file_name, 'w') as f:
+            json.dump('', f, indent=2)
+
+class CustomerModelForClient(CustomerModel):
     def __init__(self, file_name, card_number, pin):
+        super().__init__(file_name)
         self.__card_number = card_number
         self.__pin = pin
-        self.__file_name = file_name
         self.__customer_id = None
         self.__customer_name = None
-        self.__customer_account_dict = {}
         self.__current_account = None
 
     @property
@@ -28,24 +48,12 @@ class CustomerModel():
         self.__customer_name = name
 
     @property
-    def customer_account_dict(self):
-        return self.__customer_account_dict
-
-    @customer_account_dict.setter
-    def customer_account_dict(self, account_dict):
-        self.__customer_account_dict = account_dict
-
-    @property
     def current_account(self):
         return self.__current_account
 
     @current_account.setter
     def current_account(self, account):
         self.__current_account = account
-
-    def _load_from_file(self):
-        with open(self.__file_name, 'r') as f:
-            return json.load(f)
 
     def _save_to_file(self):
         customer_dict = {}
@@ -67,7 +75,6 @@ class CustomerModel():
             self.customer_name = customers_dict[self.customer_id]['name']
             self.customer_account_dict = customers_dict[self.customer_id]['accounts']
 
-
     def _set_current_account(self, account_type):
         if len(self.customer_account_dict) != 0:
             if account_type in self.customer_account_dict:
@@ -80,14 +87,12 @@ class CustomerModel():
                                                           self.customer_account_dict[account_type]['balance'],
                                                           self.customer_account_dict[account_type]['transactions'])
 
+class CustomerModelForCL(CustomerModel):
+    def __init__(self, file_name):
+        super().__init__(file_name)
 
 if __name__ == '__main__':
-    new_customer_model = CustomerModel('data/accounts.json', "1")
-    new_customer_model._load_customer()
-    new_customer_model._set_current_account('chequing')
-    print(new_customer_model.current_account)
-    new_customer_model.current_account.withdraw(500)
-    new_customer_model._save_to_file()
+    pass
 
 
 

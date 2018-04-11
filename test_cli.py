@@ -5,7 +5,7 @@ class CLITellerSimmulator():
 
 
 if __name__ == "__main__":
-    admin = CLITellerSimmulator('./models/data/accounts.json')
+    admin = CLITellerSimmulator('./models/data/customers.json')
     # admin._cli_main_controller._add_new_account("20")
     #admin._cli_main_controller._change_account_holder_name("2",'Stacy')
     #admin._cli_main_controller._delete_account("55")

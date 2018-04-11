@@ -1,34 +1,50 @@
 {
-    "customers": {
-        "67543": {
-            "username": "ghjfh",
-            "password": "hgjfdj",
-            "accounts": {
-                "checking": {
-                    "balance": 1958.5,
-                        "transaction_list": [
-                            {
-                                "time": "2018-04-10 14:48:34.943073",
-                                "type": "withdrawal",
-                                "balance_before": 2000,
-                                "balance_after": 1960,
-                                "status": "success",
-                                "description": "Withdrawal successful."
-                            },
-                            {
-                                "time": "2018-04-10 14:48:34.943073",
-                                "type": "transaction fee",
-                                "balance_before": 1960,
-                                "balance_after": 1958.5,
-                                "status": "success",
-                                "description": "Fee charged - withdraw_fee"
-                            }
-                        ]
-                    }
-                },
-                "saving": {
-
-                }
-            }
-        }
+  "1": {
+    "card_number": "4856673772575768",
+    "card_type": "VISA",
+    "pin": "1234",
+    "name": "Viktor",
+    "accounts": {
+      "chequing": {
+        "balance": 2000.0,
+        "transactions": []
+      },
+      "savings": {
+        "balance": 5000.0,
+        "transactions": []
+      }
+    }
+  },
+  "2": {
+    "card_number": "4485618638818968",
+    "card_type": "VISA",
+    "pin": "1234",
+    "name": "Jane",
+    "accounts": {
+      "chequing": {
+        "balance": 1000.0,
+        "transactions": []
+      },
+      "savings": {
+        "balance": 1000.0,
+        "transactions": []
+      }
+    }
+  },
+  "3": {
+    "card_number": "4503506396429566",
+    "card_type": "VISA",
+    "pin": "3085",
+    "name": "Edmund",
+    "accounts": {
+      "chequing": {
+        "balance": -200.0,
+        "transactions": []
+      },
+      "savings": {
+        "balance": 0.0,
+        "transactions": []
+      }
+    }
+  }
 }

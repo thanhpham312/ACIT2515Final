@@ -1,5 +1,5 @@
 import json
-from models.account import Account, ChequingAccount, SavingsAccount
+from models.account import ChequingAccount, SavingsAccount
 
 class CustomerModel():
     def __init__(self, file_name, customer_id):
@@ -45,9 +45,12 @@ class CustomerModel():
         with open(self.__file_name, 'r') as f:
             return json.load(f)
 
-    def _save_to_file(self, data):
-        with open(self.__file_name, 'w') as f:
-            json.dump(data, f, indent=2)
+    def _save_to_file(self):
+        self.customer_account_dict[self.current_account.type] = self.current_account._to_dict()
+        with open(self.__file_name, 'rw') as f:
+            customer_dict = json.load(f)
+            customer_dict[self.customer_id]['accounts'] = self.customer_account_dict
+            json.dump(customer_dict, f, indent=2)
 
     def _load_customer(self):
         customers_dict = self._load_from_file()

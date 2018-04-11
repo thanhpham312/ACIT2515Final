@@ -9,7 +9,7 @@
       "amount": 0.1
     }
   },
-  "saving": {
+  "savings": {
     "withdraw_fee": {
       "type": "set_amount",
       "amount": 3.0

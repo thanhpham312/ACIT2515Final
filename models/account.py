@@ -7,7 +7,6 @@ class Account():
         self.__type = type
         self.__balance = balance
         self.__transaction_list = transaction_list
-        self.__fees = Fee(self, './models/data/fees.json')
 
     @property
     def type(self):
@@ -29,52 +28,57 @@ class Account():
     def transaction_list(self, list):
         self.__transaction_list = list
 
-    @property
-    def fees(self):
-        return self.__fees
-
     def deposit(self, deposit_amount):
-        if deposit_amount > 0:
-            balance_before = self.balance
-            self.balance += deposit_amount
-            transaction_description = "Deposit successful."
-            transaction = Transaction(self, datetime.datetime.now(), "deposit", balance_before, self.balance,
-                                      "success",
-                                      transaction_description)
-            self.transaction_list.append(transaction.to_dict())
-            return True
-        else:
-            transaction_description = "Deposit failed. Amount incorrect"
-            transaction = Transaction(self, datetime.datetime.now(), "deposit", self.balance, self.balance,
-                                      "failed",
-                                      transaction_description)
-            self.transaction_list.append(transaction.to_dict())
+        try:
+            deposit_amount = float(deposit_amount)
+            if deposit_amount < 0:
+                transaction_description = "Deposit failed - Amount incorrect."
+                transaction = Transaction(self, datetime.datetime.now(), "deposit", self.balance, self.balance,
+                                          "failed",
+                                          transaction_description)
+                self.transaction_list.append(transaction._to_dict())
+                return False
+        except ValueError:
             return False
+
+        balance_before = self.balance
+        self.balance += deposit_amount
+        transaction_description = "Deposit succeeded."
+        transaction = Transaction(self, datetime.datetime.now(), "deposit", balance_before, self.balance,
+                                  "succeeded",
+                                  transaction_description)
+        self.transaction_list.append(transaction._to_dict())
+        return True
 
 
     def withdraw(self, withdraw_amount):
-        if withdraw_amount > 0:
-            if withdraw_amount < self.balance:
-                transaction_description = "Failed to withdraw money, balance not enough."
-                transaction = Transaction(self, datetime.datetime.now(), "withdrawal", self.balance, self.balance, "failed",
+        try:
+            withdraw_amount = float(withdraw_amount)
+            if withdraw_amount < 0:
+                transaction_description = "Withdrawal failed - Amount incorrect."
+                transaction = Transaction(self, datetime.datetime.now(), "withdrawal", self.balance, self.balance,
+                                          "failed",
                                           transaction_description)
-                self.transaction_list.append(transaction.to_dict())
+                self.transaction_list.append(transaction._to_dict())
                 return False
-            else:
-                balance_before = self.balance
-                self.balance -= withdraw_amount
-                transaction_description = "Withdrawal successful."
-                transaction = Transaction(self, datetime.datetime.now(), "withdrawal", balance_before, self.balance, "success",
-                                          transaction_description)
-                self.transaction_list.append(transaction.to_dict())
-                return True
-        else:
-            transaction_description = "Withdrawal failed. Amount incorrect"
-            transaction = Transaction(self, datetime.datetime.now(), "withdrawal", self.balance, self.balance,
-                                      "failed",
-                                      transaction_description)
-            self.transaction_list.append(transaction.to_dict())
+        except ValueError:
             return False
+
+        if withdraw_amount < self.balance:
+            transaction_description = "Withdrawal failed - Balance not enough."
+            transaction = Transaction(self, datetime.datetime.now(), "withdrawal", self.balance, self.balance, "failed",
+                                      transaction_description)
+            self.transaction_list.append(transaction._to_dict())
+            return False
+        else:
+            balance_before = self.balance
+            self.balance -= withdraw_amount
+            transaction_description = "Withdrawal succeeded."
+            transaction = Transaction(self, datetime.datetime.now(), "withdrawal", balance_before, self.balance, "succeeded",
+                                      transaction_description)
+            self.transaction_list.append(transaction._to_dict())
+            return True
+
 
     def _to_dict(self):
         return {
@@ -89,69 +93,92 @@ class ChequingAccount(Account):
     def __init__(self, type="chequing", balance=0, transaction_list=[]):
         super().__init__(type, balance, transaction_list)
         self.__overdraft = -500.0
+        self.__fees = Fee(self)
+
+    @property
+    def fees(self):
+        return self.__fees
 
     def withdraw(self, withdraw_amount):
-        if withdraw_amount > 0:
-            if self.balance - withdraw_amount < self.__overdraft:
-                transaction_description = "Failed to withdraw money, balance not enough."
-                transaction = Transaction(self, datetime.datetime.now(), "withdrawal", self.balance, self.balance, "failed",
+        try:
+            withdraw_amount = float(withdraw_amount)
+            if withdraw_amount < 0:
+                transaction_description = "Withdrawal failed - Amount incorrect."
+                transaction = Transaction(self, datetime.datetime.now(), "withdrawal", self.balance, self.balance,
+                                          "failed",
                                           transaction_description)
-                self.transaction_list.append(transaction.to_dict())
+                self.transaction_list.append(transaction._to_dict())
                 return False
-            elif withdraw_amount > self.balance + self.__overdraft:
-                balance_before = self.balance
-                self.balance -= withdraw_amount
-                transaction_description = "Withdrawal successful."
-                transaction = Transaction(self, datetime.datetime.now(), "withdrawal", balance_before, self.balance, "success",
-                                          transaction_description)
-                self.transaction_list.append(transaction.to_dict())
+        except ValueError:
+            return False
 
-                self.fees._charge_fee("overdraft_fee")
-                return True
-            else:
-                balance_before = self.balance
-                self.balance -= withdraw_amount
-                transaction_description = "Withdrawal successful."
-                transaction = Transaction(self, datetime.datetime.now(), "withdrawal", balance_before, self.balance, "success",
-                                          transaction_description)
-                self.transaction_list.append(transaction.to_dict())
+        if self.balance - withdraw_amount - self.fees._get_fee("withdraw_fee") > 0:
+            balance_before = self.balance
+            self.balance -= withdraw_amount
+            transaction_description = "Withdrawal succeeded."
+            transaction = Transaction(self, datetime.datetime.now(), "withdrawal", balance_before, self.balance,
+                                      "succeeded",
+                                      transaction_description)
+            self.transaction_list.append(transaction._to_dict())
 
-                self.fees._charge_fee("withdraw_fee")
-                return True
+            self.fees._charge_fee("withdraw_fee")
+            return True
+        elif self.balance - withdraw_amount - self.fees._get_fee("overdraft_fee") < 0 and self.balance - withdraw_amount - self.fees._get_fee("overdraft_fee") > self.__overdraft\
+                or self.balance - withdraw_amount - self.fees._get_fee("withdraw_fee")  and self.balance - withdraw_amount - self.fees._get_fee("withdraw_fee") > self.__overdraft < 0:
+            balance_before = self.balance
+            self.balance -= withdraw_amount
+            transaction_description = "Withdrawal succeeded."
+            transaction = Transaction(self, datetime.datetime.now(), "withdrawal", balance_before, self.balance, "success",
+                                      transaction_description)
+            self.transaction_list.append(transaction._to_dict())
+
+            self.fees._charge_fee("overdraft_fee")
+            return True
         else:
-            transaction_description = "Withdrawal failed. Amount incorrect"
+            transaction_description = "Withdrawal failed - Balance not enough."
             transaction = Transaction(self, datetime.datetime.now(), "withdrawal", self.balance, self.balance,
                                       "failed",
                                       transaction_description)
-            self.transaction_list.append(transaction.to_dict())
+            self.transaction_list.append(transaction._to_dict())
             return False
 
 class SavingsAccount(Account):
-    def __init__(self, id, name, type="saving", balance=0, transaction_list=[]):
+    def __init__(self, type="savings", balance=0, transaction_list=[]):
         super().__init__(type, balance, transaction_list)
+        self.__fees = Fee(self)
+
+    @property
+    def fees(self):
+        return self.__fees
 
     def withdraw(self, withdraw_amount):
-        if withdraw_amount > 0:
-            if withdraw_amount < self.balance:
-                transaction_description = "Failed to withdraw money, balance not enough."
-                transaction = Transaction(self, datetime.datetime.now(), "withdrawal", self.balance, self.balance, "failed",
+        try:
+            withdraw_amount = float(withdraw_amount)
+            if withdraw_amount < 0:
+                transaction_description = "Withdrawal failed - Amount incorrect."
+                transaction = Transaction(self, datetime.datetime.now(), "withdrawal", self.balance, self.balance,
+                                          "failed",
                                           transaction_description)
-                self.transaction_list.append(transaction.to_dict())
+                self.transaction_list.append(transaction._to_dict())
                 return False
-            else:
-                balance_before = self.balance
-                self.balance -= withdraw_amount
-                transaction_description = "Withdrawal successful."
-                transaction = Transaction(self, datetime.datetime.now(), "withdrawal", balance_before, self.balance, "success",
-                                          transaction_description)
-                self.transaction_list.append(transaction.to_dict())
+        except ValueError:
+            return False
 
-                self.fees._charge_fee("withdraw_fee")
-                return True
+        if self.balance - withdraw_amount - self.fees._get_fee("withdraw_fee") > 0:
+            balance_before = self.balance
+            self.balance -= withdraw_amount
+            transaction_description = "Withdrawal successful."
+            transaction = Transaction(self, datetime.datetime.now(), "withdrawal", balance_before, self.balance,
+                                      "succeeded",
+                                      transaction_description)
+            self.transaction_list.append(transaction._to_dict())
+
+            self.fees._charge_fee("withdraw_fee")
+            return True
         else:
-            transaction_description = "Withdrawal failed. Amount incorrect"
+            transaction_description = "Withdrawal failed - Balance not enough."
             transaction = Transaction(self, datetime.datetime.now(), "withdrawal", self.balance, self.balance,
                                       "failed",
                                       transaction_description)
-            self.transaction_list.append(transaction.to_dict())
+            self.transaction_list.append(transaction._to_dict())
             return False

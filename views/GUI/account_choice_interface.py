@@ -1,7 +1,7 @@
 from tkinter import *
 
 
-class AccountTypeCheckInterface():
+class AccounChoiceInterface():
 
     def __init__(self, master: Frame):
         self.master = master
@@ -48,7 +48,7 @@ class AccountTypeCheckInterface():
 if __name__ == '__main__':
     root = Tk()
     root.geometry('600x450')
-    AccountTypeCheckInterface(root)
+    AccounChoiceInterface(root)
     mainloop()
 
 

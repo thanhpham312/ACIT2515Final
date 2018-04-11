@@ -1,6 +1,5 @@
 from tkinter import *
-from views.main_interface import MainInterface
-from controllers.main_client_controller import MainClientController
+from controllers.GUI.main_client_controller import MainClientController
 
 class ATMSimulator():
     def __init__(self):

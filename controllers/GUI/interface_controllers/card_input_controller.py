@@ -1,11 +1,11 @@
 from tkinter import messagebox
-from views.card_input_interface import CardInputInterface
+from views.GUI.card_input_interface import CardInputInterface
 from models.customer_model import CustomerModelForClient
 
 class CardInputController():
-    def __init__(self, main_controller, current_account):
+    def __init__(self, main_controller):
         self.main_controller = main_controller
-        self.current_account = current_account
+        main_controller.main_interface.master.title('Enter Card Number')
         self.card_input_interface = CardInputInterface(main_controller.main_interface.main_interface_frame)
 
         self.card_input_interface.bottom_cancel_button.config(command=exit)

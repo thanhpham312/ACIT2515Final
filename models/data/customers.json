@@ -6,7 +6,7 @@
     "name": "Viktor",
     "accounts": {
       "chequing": {
-        "balance": 1498.5,
+        "balance": 1415.5,
         "transactions": [
           {
             "time": "2018-04-10 19:47:47.074635",
@@ -21,6 +21,38 @@
             "type": "transaction fee",
             "balance_before": 1500.0,
             "balance_after": 1498.5,
+            "status": "success",
+            "description": "Fee charged - withdraw_fee"
+          },
+          {
+            "time": "2018-04-11 00:16:10.838892",
+            "type": "withdrawal",
+            "balance_before": 1498.5,
+            "balance_after": 1458.5,
+            "status": "success",
+            "description": "Withdrawal successful."
+          },
+          {
+            "time": "2018-04-11 00:16:10.838892",
+            "type": "transaction fee",
+            "balance_before": 1458.5,
+            "balance_after": 1457.0,
+            "status": "success",
+            "description": "Fee charged - withdraw_fee"
+          },
+          {
+            "time": "2018-04-11 00:37:16.260407",
+            "type": "withdrawal",
+            "balance_before": 1457.0,
+            "balance_after": 1417.0,
+            "status": "success",
+            "description": "Withdrawal successful."
+          },
+          {
+            "time": "2018-04-11 00:37:16.260407",
+            "type": "transaction fee",
+            "balance_before": 1417.0,
+            "balance_after": 1415.5,
             "status": "success",
             "description": "Fee charged - withdraw_fee"
           }
@@ -55,7 +87,7 @@
     "name": "Edmund",
     "accounts": {
       "chequing": {
-        "balance": -200.0,
+        "balance": -480.0,
         "transactions": []
       },
       "savings": {

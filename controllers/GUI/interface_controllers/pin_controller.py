@@ -1,9 +1,9 @@
-from tkinter import *
-from views.pin_interface import PinInterface
+from views.GUI.pin_interface import PinInterface
 
 class PinController():
-    def __init__(self, main_controller, current_account):
+    def __init__(self, main_controller):
         self.main_controller = main_controller
+        main_controller.main_interface.master.title('Change PIN')
         self.pin_interface = PinInterface(main_controller.main_interface.main_interface_frame)
 
         self.pin_interface.pin_pad_OK.bind('<Button-1>', lambda event:

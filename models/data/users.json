@@ -1,12 +1,10 @@
 {
-  "user_list": {
-    "1": {
-      "username": "4856673772575768",
-      "password": "1234"
+  "1": {
+      "username": "student",
+      "password": "student"
     },
-    "2": {
-      "username": "janedoe",
-      "password": "password"
-    }
+  "2": {
+    "username": "janedoe",
+    "password": "password"
   }
 }

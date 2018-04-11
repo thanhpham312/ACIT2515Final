@@ -1,14 +1,14 @@
 from tkinter import messagebox
-from views.account_type_check_interface import AccountTypeCheckInterface
+from views.GUI.account_choice_interface import AccounChoiceInterface
 
-class AccountTypeCheckController():
-    def __init__(self, main_controller, current_account):
+class AccountChoiceController():
+    def __init__(self, main_controller):
         self.main_controller = main_controller
-        self.current_account = current_account
-        self.account_type_check_interface = AccountTypeCheckInterface(main_controller.main_interface.main_interface_frame)
+        main_controller.main_interface.master.title('Choose Account')
+        self.account_type_check_interface = AccounChoiceInterface(main_controller.main_interface.main_interface_frame)
 
         self.account_type_check_interface.bottom_savings_button.config(command=lambda:
-                                                                       self.select_account('saving'))
+                                                                       self.select_account('savings'))
         self.account_type_check_interface.bottom_chequing_button.config(command=lambda:
                                                                         self.select_account('chequing'))
 

@@ -1,9 +1,9 @@
-from views.check_balance_interface import CheckBalanceInterface
+from views.GUI.check_balance_interface import CheckBalanceInterface
 
 class CheckBalanceController():
-    def __init__(self, main_controller, current_account):
+    def __init__(self, main_controller):
         self.main_controller = main_controller
-        self.current_account = current_account
+        main_controller.main_interface.master.title('Check Balance')
         self.check_balance_interface = CheckBalanceInterface(main_controller.main_interface.main_interface_frame)
         
         self.check_balance_interface.button1.bind('<Button-1>', lambda event:

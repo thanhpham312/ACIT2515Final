@@ -4,23 +4,21 @@ from models.account import ChequingAccount, SavingsAccount
 class CustomerModel():
     def __init__(self, file_name):
         self.__file_name = file_name
-        self.__customer_account_dict = {}
 
     @property
-    def customer_account_dict(self):
-        return self.__customer_account_dict
-
-    @customer_account_dict.setter
-    def customer_account_dict(self, account_dict):
-        self.__customer_account_dict = account_dict
+    def file_name(self):
+        return self.__file_name
 
     def _load_from_file(self):
         with open(self.__file_name, 'r') as f:
             return json.load(f)
 
     def _save_to_file(self):
+        customer_dict = {}
+        with open(self.__file_name, 'r') as f:
+            customer_dict = json.load(f)
         with open(self.__file_name, 'w') as f:
-            json.dump('', f, indent=2)
+            json.dump(customer_dict, f, indent=2)
 
 class CustomerModelForClient(CustomerModel):
     def __init__(self, file_name, card_number, pin):
@@ -58,17 +56,15 @@ class CustomerModelForClient(CustomerModel):
     def _save_to_file(self):
         customer_dict = {}
         self.customer_account_dict[self.current_account.type] = self.current_account._to_dict()
-        with open(self.__file_name, 'r') as f:
+        with open(self.file_name, 'r') as f:
             customer_dict = json.load(f)
-        with open(self.__file_name, 'w') as f:
+        with open(self.file_name, 'w') as f:
             customer_dict[self.customer_id]['accounts'] = self.customer_account_dict
             json.dump(customer_dict, f, indent=2)
 
     def _load_customer(self):
         customers_dict = self._load_from_file()
-        print(customers_dict.values())
         for customer_id, customer_object in customers_dict.items():
-            print(customer_object)
             if self.__card_number == customer_object['card_number'] and self.__pin == customer_object['pin']:
                 self.customer_id = customer_id
         if self.customer_id in customers_dict:
@@ -90,6 +86,15 @@ class CustomerModelForClient(CustomerModel):
 class CustomerModelForCL(CustomerModel):
     def __init__(self, file_name):
         super().__init__(file_name)
+        self.__customer_account_dict = {}
+
+    @property
+    def customer_account_dict(self):
+        return self.__customer_account_dict
+
+    @customer_account_dict.setter
+    def customer_account_dict(self, account_dict):
+        self.__customer_account_dict = account_dict
 
 if __name__ == '__main__':
     pass

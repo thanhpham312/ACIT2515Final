@@ -2,12 +2,12 @@ import json
 from json import JSONEncoder
 import hashlib
 import sys
-from models.account_model_for_cli import AccountModel
+from models.customer_model import CustomerModelForCL
 
 class CLIModelController():
     __USERID = 1000
     def __init__(self, file_name):
-        self._account_model = AccountModel(file_name)
+        self._account_model = CustomerModelForCL(file_name)
         self._account_model._load_from_file()
 
     def check_input(self):

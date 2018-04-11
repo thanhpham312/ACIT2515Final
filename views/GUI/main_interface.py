@@ -9,12 +9,12 @@ class MainInterface():
 
 
         # Menu:
-        self.main_menu = Menu(self.master)
-        self.master.config(menu=self.main_menu)
-        self.file_menu = Menu(self.main_menu)
-
-        self.main_menu.add_cascade(label='File', menu=self.file_menu)
-        self.file_menu.add_command(label='Quit', command=self.master.quit)
+        # self.main_menu = Menu(self.master)
+        # self.master.config(menu=self.main_menu)
+        # self.file_menu = Menu(self.main_menu)
+        #
+        # self.main_menu.add_cascade(label='File', menu=self.file_menu)
+        # self.file_menu.add_command(label='Quit', command=self.master.quit)
 
         # Frames:
         self.main_interface_frame = Frame(self.master)

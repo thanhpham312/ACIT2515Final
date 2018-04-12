@@ -2,13 +2,14 @@ import json
 from json import JSONEncoder
 import hashlib
 import sys
-from models.account_model_for_cli import AccountModel
+# from models.account_model_for_cli import AccountModel
+from models.customer_model import CustomerModel
 
 class CLIModelController():
     __USERID = 1000
     def __init__(self, file_name):
-        self._account_model = AccountModel(file_name)
-        self._account_model._load_from_file()
+        # self._account_model = CustomerModel(file_name,card_number,pin)
+        # self._account_model._load_from_file()
 
     def check_input(self):
         what_to_do = 0
@@ -71,15 +72,15 @@ class CLIModelController():
         }
 
 
-        self._account_model.account_list['customers']= new_id
-        self._account_model.account_list['customers'][new_id] = new_account
-        self._account_model.account_list['customers'][new_id][new_account] = acc_type
-        self._account_model.account_list['customers'][new_id][new_account][acc_type] = trans_list
+        self._account_model.current_account['customers']= new_id
+        self._account_model.current_account['customers'][new_id] = new_account
+        self._account_model.current_account['customers'][new_id][new_account] = acc_type
+        self._account_model.current_account['customers'][new_id][new_account][acc_type] = trans_list
         self._account_model._save_to_file()
 
     def _delete_account(self, account_id):
         try:
-            self._account_model.account_list['customers'].pop(account_id)
+            self._account_model._load_from_file['customers'].pop(account_id)
             self._account_model._save_to_file()
         except:
             print('No account found')
@@ -87,7 +88,7 @@ class CLIModelController():
     def _change_account_holder_name(self,id,new_holder_name):
         try:
             #print(self._account_model.account_list)
-            print(self._account_model.account_list)
+            print(self._account_model.current_account)
             # self._account_model.account_list['customers'][id]['username'] = new_holder_name
             # self._account_model._save_to_file()
         except:

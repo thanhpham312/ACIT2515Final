@@ -32,7 +32,7 @@ class Transaction():
     def description(self):
         return self.__description
 
-    def to_dict(self):
+    def _to_dict(self):
         return {
           "time": str(self.__time),
           "type": self.__type,

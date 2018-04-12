@@ -21,7 +21,38 @@ class MainMenuInterface():
         print('7. Log out')
         print('-' * 50 + '\n')
 
-
-class AddUserInterface():
+class CustomerCreationInterface():
     def __init__(self):
-        print('')
+        print('\n' + '-' * 50)
+        print('Please enter the following information to create a new customer profile:')
+        print('-' * 50 + '\n')
+
+class CustomerDeletionInterface():
+    def __init__(self):
+        print('\n' + '-' * 50)
+        print('Please enter the customer ID to continue:')
+        print('-' * 50 + '\n')
+
+class AccountCreationInterface():
+    def __init__(self):
+        print('\n' + '-' * 50)
+        print('Please enter the customer ID to continue:')
+        print('-' * 50 + '\n')
+
+class AccountDeletionInterface():
+    def __init__(self):
+        print('\n' + '-' * 50)
+        print('Please enter the following information to delete an user account:')
+        print('-' * 50 + '\n')
+
+class ViewTransactionInterface():
+    def __init__(self):
+        print('\n' + '-' * 50)
+        print('Please enter the following information to view transactions for an user account:')
+        print('-' * 50 + '\n')
+
+class PrintTransactionInterface():
+    def __init__(self):
+        print('\n' + '-' * 50)
+        print('Please enter the following information to print transactions for an user account:')
+        print('-' * 50 + '\n')

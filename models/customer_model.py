@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 from models.account import ChequingAccount, SavingsAccount
 
 class CustomerModel():
@@ -83,18 +84,36 @@ class CustomerModelForClient(CustomerModel):
                                                           self.customer_account_dict[account_type]['balance'],
                                                           self.customer_account_dict[account_type]['transactions'])
 
-class CustomerModelForCL(CustomerModel):
+class CustomerModelForCLI(CustomerModel):
     def __init__(self, file_name):
         super().__init__(file_name)
-        self.__customer_account_dict = {}
+        self.__customers_dict = self._load_from_file()
 
     @property
-    def customer_account_dict(self):
-        return self.__customer_account_dict
+    def customers_dict(self):
+        return self.__customers_dict
 
-    @customer_account_dict.setter
-    def customer_account_dict(self, account_dict):
-        self.__customer_account_dict = account_dict
+    @customers_dict.setter
+    def customers_dict(self, dict):
+        self.__customers_dict = dict
+
+    def _save_to_file(self):
+        with open(self.file_name, 'w') as f:
+            json.dump(self.customers_dict, f, indent=2)
+
+    def create_customer(self, name, pin):
+        self.customers_dict = self._load_from_file()
+        new_card_number = datetime.now().strftime('%Y%m%d%H%M%S')
+        new_customer_object = {
+            "card_number": new_card_number,
+            "card_type": "VISA",
+            "pin": pin,
+            "name": name,
+            "accounts": []
+        }
+        new_customer_id = str(len(self.customers_dict.keys()) + 1)
+        self.customers_dict[new_customer_id] = new_customer_object
+        self._save_to_file()
 
 if __name__ == '__main__':
     pass

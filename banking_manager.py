@@ -1,5 +1,5 @@
 from tkinter import *
-from controllers.CLI.main_controller import MainCLIController
+from controllers.CLI.main_cli_controller import MainCLIController
 
 class BankingManager():
     def __init__(self):

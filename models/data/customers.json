@@ -143,12 +143,46 @@
     "name": "Edmund",
     "accounts": {
       "chequing": {
-        "balance": -480.0,
-        "transactions": []
+        "balance": 1e+69,
+        "transactions": [
+          {
+            "time": "2018-04-11 18:30:29.037549",
+            "type": "deposit",
+            "balance_before": -480.0,
+            "balance_after": 1e+69,
+            "status": "succeeded",
+            "description": "Deposit succeeded."
+          },
+          {
+            "time": "2018-04-11 18:30:51.765922",
+            "type": "withdrawal",
+            "balance_before": 1e+69,
+            "balance_after": 1e+69,
+            "status": "succeeded",
+            "description": "Withdrawal succeeded."
+          },
+          {
+            "time": "2018-04-11 18:30:51.765922",
+            "type": "transaction fee",
+            "balance_before": 1e+69,
+            "balance_after": 1e+69,
+            "status": "success",
+            "description": "Fee charged - withdraw_fee."
+          }
+        ]
       },
       "savings": {
-        "balance": 0.0,
-        "transactions": []
+        "balance": 99.0,
+        "transactions": [
+          {
+            "time": "2018-04-11 18:30:38.327199",
+            "type": "deposit",
+            "balance_before": 0.0,
+            "balance_after": 99.0,
+            "status": "succeeded",
+            "description": "Deposit succeeded."
+          }
+        ]
       }
     }
   }

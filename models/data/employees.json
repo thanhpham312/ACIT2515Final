@@ -1,6 +1,10 @@
 {
-  "admins" : {
-    "name":"admin",
+  "1" : {
+    "username":"admin",
     "password":"password"
+  },
+  "2" : {
+    "username":"student",
+    "password":"student"
   }
 }

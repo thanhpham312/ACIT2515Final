@@ -2,7 +2,7 @@ import json
 from models.account import ChequingAccount, SavingsAccount
 
 class CustomerModel():
-    def __init__(self, file_name):
+    def __init__(self, file_name='./models/data/customers.json'):
         self.__file_name = file_name
 
     @property
@@ -67,9 +67,9 @@ class CustomerModelForClient(CustomerModel):
         for customer_id, customer_object in customers_dict.items():
             if self.__card_number == customer_object['card_number'] and self.__pin == customer_object['pin']:
                 self.customer_id = customer_id
-        if self.customer_id in customers_dict:
-            self.customer_name = customers_dict[self.customer_id]['name']
-            self.customer_account_dict = customers_dict[self.customer_id]['accounts']
+                self.customer_name = customers_dict[self.customer_id]['name']
+                self.customer_account_dict = customers_dict[self.customer_id]['accounts']
+                break
 
     def _set_current_account(self, account_type):
         if len(self.customer_account_dict) != 0:

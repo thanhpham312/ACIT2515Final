@@ -145,6 +145,41 @@ class CustomerModelForCLI(CustomerModel):
         for transaction in self.customers_dict[account_id]["accounts"][account_type_word]["transactions"]:
             print(transaction["time"] +" "+ transaction["type"]+" "+str(transaction["balance_before"])+" "+str(transaction["balance_after"])+" "+transaction["status"]+" "+transaction["description"])
 
+    def print_customer_transactions(self,account_id, account_type):
+        account_type_word = ''
+        if account_type == "1":
+            account_type_word = "chequing"
+        elif account_type_word == "2":
+            account_type_word = "saving"
+        print("Listing customer transactions:")
+        self.customers_dict = self._load_from_file()
+        number = 0
+        f = open("models/data/report_file.txt","w")
+        for transaction in self.customers_dict[account_id]["accounts"][account_type_word]["transactions"]:
+            f.write(transaction["time"] + " " + transaction["type"] + " " + str(transaction["balance_before"]) + " " + str(transaction["balance_after"]) + " " + transaction["status"] + " " + transaction["description"]+"\n")
+        f.close()
+
+    def create_account(self,customer_id,account_type):
+        self.customers_dict = self._load_from_file()
+        account_type_word = ''
+        if account_type == "1":
+            account_type_word = "chequing"
+        elif account_type_word == "2":
+            account_type_word = "saving"
+
+        if not self.customers_dict[customer_id]["accounts"]:
+            print("List is empty")
+            new_account = {
+                "balance": 0,
+                "transactions": []
+            }
+            self.customers_dict[customer_id]["accounts"][account_type_word]=new_account
+            self._save_to_file()
+        else:
+            print("Account already exists")
+
+
+
 if __name__ == '__main__':
     pass
 

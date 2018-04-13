@@ -1,0 +1,4 @@
+2018-04-11 18:30:29.037549 deposit -480.0 1e+69 succeeded Deposit succeeded.
+2018-04-11 18:30:29.037549 deposit -480.0 1e+69 succeeded Deposit succeeded.
+2018-04-11 18:30:51.765922 withdrawal 1e+69 1e+69 succeeded Withdrawal succeeded.
+2018-04-11 18:30:51.765922 transaction fee 1e+69 1e+69 success Fee charged - withdraw_fee.

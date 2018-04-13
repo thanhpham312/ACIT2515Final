@@ -8,4 +8,7 @@ class AccountCreationController():
         self.create_account()
 
     def create_account(self):
-        pass
+        customer_id = input("Enter the customer id: ")
+        account_type = input("Enter the account type: ")
+        self.main_controller.customer_model.create_account(customer_id,account_type)
+        self.main_controller.change_controller('main_menu')

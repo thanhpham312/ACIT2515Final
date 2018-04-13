@@ -1,4 +1,5 @@
 import json
+import hashlib
 from datetime import datetime
 from models.account import ChequingAccount, SavingsAccount
 
@@ -65,12 +66,14 @@ class CustomerModelForClient(CustomerModel):
 
     def _load_customer(self):
         customers_dict = self._load_from_file()
+        input_hash = hashlib.sha256(str.encode(self.__pin)).hexdigest()
         for customer_id, customer_object in customers_dict.items():
-            if self.__card_number == customer_object['card_number'] and self.__pin == customer_object['pin']:
+            if self.__card_number == customer_object['card_number'] and input_hash == customer_object['pin']:
                 self.customer_id = customer_id
                 self.customer_name = customers_dict[self.customer_id]['name']
                 self.customer_account_dict = customers_dict[self.customer_id]['accounts']
                 break
+
 
     def _set_current_account(self, account_type):
         if len(self.customer_account_dict) != 0:
@@ -101,13 +104,18 @@ class CustomerModelForCLI(CustomerModel):
         with open(self.file_name, 'w') as f:
             json.dump(self.customers_dict, f, indent=2)
 
+    def make_pin_hash(self, pin):
+        return hashlib.sha256(str.encode(pin)).hexdigest()
+
+
     def create_customer(self, name, pin):
         self.customers_dict = self._load_from_file()
         new_card_number = datetime.now().strftime('%Y%m%d%H%M%S')
+        hash_pin = self.make_pin_hash(pin)
         new_customer_object = {
             "card_number": new_card_number,
             "card_type": "VISA",
-            "pin": pin,
+            "pin": hash_pin,
             "name": name,
             "accounts": []
         }

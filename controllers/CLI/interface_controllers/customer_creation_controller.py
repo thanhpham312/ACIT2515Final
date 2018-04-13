@@ -10,6 +10,14 @@ class CustomerCreationController():
     def create_customer(self):
         name = input('Please enter a name for new customer: ')
         pin = input('Choose a pin: ')
-        self.main_controller.customer_model.create_customer(name, pin)
-        print('Customer creation successful!')
-        self.main_controller.change_controller('main_menu')
+        try:
+            int(pin)
+            self.main_controller.customer_model.create_customer(name, pin)
+
+            while 1:
+                input('Customer creation successful! Press enter to continue.')
+                break
+            self.main_controller.change_controller('main_menu')
+        except:
+            self.create_customer()
+

@@ -129,8 +129,13 @@ class CustomerModelForCLI(CustomerModel):
         self._save_to_file()
 
     def delete_customer_account(self,customer_id,account_type):
+        account_type_word = ''
+        if account_type == "1":
+            account_type_word = "chequing"
+        elif account_type_word == "2":
+            account_type_word = "saving"
         self.customers_dict = self._load_from_file()
-        self.customers_dict[customer_id][account_type] = {}
+        self.customers_dict[customer_id][account_type_word] = {}
         self._save_to_file()
 
     def view_customer_transactions(self,account_id, account_type):

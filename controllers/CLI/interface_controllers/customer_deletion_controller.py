@@ -13,3 +13,7 @@ class CustomerDeletionController():
         self.main_controller.customer_model.delete_customer_account(customer_id, account_type)
         print('Customer deletion successful!')
         self.main_controller.change_controller('main_menu')
+        while 1:
+            customer_id = input("Enter the customer id: ")
+            self.main_controller.customer_model.delete_customer(customer_id)
+            self.main_controller.change_controller('main_menu')

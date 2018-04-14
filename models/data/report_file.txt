@@ -1,4 +1,27 @@
-2018-04-11 18:30:29.037549 deposit -480.0 1e+69 succeeded Deposit succeeded.
-2018-04-11 18:30:29.037549 deposit -480.0 1e+69 succeeded Deposit succeeded.
-2018-04-11 18:30:51.765922 withdrawal 1e+69 1e+69 succeeded Withdrawal succeeded.
-2018-04-11 18:30:51.765922 transaction fee 1e+69 1e+69 success Fee charged - withdraw_fee.
+2018-04-10 19:47:47.074635 withdrawal 2000.0 1500.0 success Withdrawal successful.
+2018-04-10 19:47:47.074635 transaction fee 1500.0 1498.5 success Fee charged - withdraw_fee
+2018-04-11 00:16:10.838892 withdrawal 1498.5 1458.5 success Withdrawal successful.
+2018-04-11 00:16:10.838892 transaction fee 1458.5 1457.0 success Fee charged - withdraw_fee
+2018-04-11 00:37:16.260407 withdrawal 1457.0 1417.0 success Withdrawal successful.
+2018-04-11 00:37:16.260407 transaction fee 1417.0 1415.5 success Fee charged - withdraw_fee
+2018-04-11 12:19:05.399627 withdrawal 1415.5 1375.5 succeeded Withdrawal succeeded.
+2018-04-11 12:19:05.399627 transaction fee 1375.5 1374.0 success Fee charged - withdraw_fee
+2018-04-11 12:50:01.225668 withdrawal 1374.0 1334.0 succeeded Withdrawal succeeded.
+2018-04-11 12:50:01.225668 transaction fee 1334.0 1332.5 success Fee charged - withdraw_fee
+2018-04-11 12:56:53.157121 withdrawal 1332.5 1312.5 succeeded Withdrawal succeeded.
+2018-04-11 12:56:53.157121 transaction fee 1312.5 1311.0 success Fee charged - withdraw_fee
+2018-04-11 13:17:15.244927 deposit 1311.0 1811.0 succeeded Deposit succeeded.
+2018-04-12 12:51:41.033394 withdrawal 1811.0 1411.0 succeeded Withdrawal succeeded.
+2018-04-12 12:51:41.033394 transaction fee 1411.0 1409.5 success Fee charged - withdraw_fee.
+2018-04-12 12:51:50.848705 withdrawal 1409.5 1009.5 succeeded Withdrawal succeeded.
+2018-04-12 12:51:50.848705 transaction fee 1009.5 1008.0 success Fee charged - withdraw_fee.
+2018-04-12 12:51:56.065971 withdrawal 1008.0 608.0 succeeded Withdrawal succeeded.
+2018-04-12 12:51:56.065971 transaction fee 608.0 606.5 success Fee charged - withdraw_fee.
+2018-04-12 12:52:10.009651 withdrawal 606.5 206.5 succeeded Withdrawal succeeded.
+2018-04-12 12:52:10.009651 transaction fee 206.5 205.0 success Fee charged - withdraw_fee.
+2018-04-12 12:52:16.253372 withdrawal 205.0 -195.0 success Withdrawal succeeded.
+2018-04-12 12:52:16.253372 transaction fee -195.0 -214.5 success Fee charged - overdraft_fee.
+2018-04-12 12:52:20.929968 withdrawal -214.5 -214.5 failed Withdrawal failed - Balance not enough.
+2018-04-12 12:52:46.682669 deposit -214.5 1585.5 succeeded Deposit succeeded.
+2018-04-13 17:49:08.793119 withdrawal 1585.5 1545.5 succeeded Withdrawal succeeded.
+2018-04-13 17:49:08.793119 transaction fee 1545.5 1544.0 success Fee charged - withdraw_fee.

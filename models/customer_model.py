@@ -145,58 +145,72 @@ class CustomerModelForCLI(CustomerModel):
         account_type_word = ''
         if account_type == "1":
             account_type_word = "chequing"
-        elif account_type_word == "2":
-            account_type_word = "saving"
-        self.customers_dict = self._load_from_file()
-        if self.customers_dict[customer_id]["accounts"]:
-            del self.customers_dict[customer_id]["accounts"][account_type_word]
-        self._save_to_file()
+        elif account_type == "2":
+            account_type_word = "savings"
+        if account_type_word in self.customers_dict[customer_id]["accounts"]:
+            self.customers_dict = self._load_from_file()
+            if self.customers_dict[customer_id]["accounts"]:
+                del self.customers_dict[customer_id]["accounts"][account_type_word]
+            self._save_to_file()
+            return True
+        else:
+            return False
 
-    def view_customer_transactions(self,account_id, account_type):
+    def view_customer_transactions(self,customer_id, account_type):
         account_type_word = ''
         if account_type == "1":
             account_type_word = "chequing"
-        elif account_type_word == "2":
-            account_type_word = "saving"
-        print("Listing customer transactions:")
-        self.customers_dict = self._load_from_file()
-        number = 0
-        for transaction in self.customers_dict[account_id]["accounts"][account_type_word]["transactions"]:
-            print(transaction["time"] +" "+ transaction["type"]+" "+str(transaction["balance_before"])+" "+str(transaction["balance_after"])+" "+transaction["status"]+" "+transaction["description"])
+        elif account_type == "2":
+            account_type_word = "savings"
+        if account_type_word in self.customers_dict[customer_id]["accounts"]:
+            print("Listing customer transactions:")
+            self.customers_dict = self._load_from_file()
+            number = 0
+            transaction_string = ''
+            for transaction in self.customers_dict[customer_id]["accounts"][account_type_word]["transactions"]:
+                transaction_string += "\n" + "*"*50 + "\n" + transaction["time"] +" "+ transaction["type"]+" "+str(transaction["balance_before"])+" "+str(transaction["balance_after"])+" "+transaction["status"]+" "+transaction["description"]
+            return transaction_string
+        else:
+            return False
 
-    def print_customer_transactions(self,account_id, account_type):
+    def print_customer_transactions(self,customer_id, account_type):
         account_type_word = ''
         if account_type == "1":
             account_type_word = "chequing"
-        elif account_type_word == "2":
-            account_type_word = "saving"
-        print("Listing customer transactions:")
-        self.customers_dict = self._load_from_file()
-        number = 0
-        f = open("models/data/report_file.txt","w")
-        for transaction in self.customers_dict[account_id]["accounts"][account_type_word]["transactions"]:
-            f.write(transaction["time"] + " " + transaction["type"] + " " + str(transaction["balance_before"]) + " " + str(transaction["balance_after"]) + " " + transaction["status"] + " " + transaction["description"]+"\n")
-        f.close()
+        elif account_type == "2":
+            account_type_word = "savings"
+        if account_type_word in self.customers_dict[customer_id]["accounts"]:
+            print("Printing customer transactions:")
+            self.customers_dict = self._load_from_file()
+            number = 0
+            f = open("{}_transactions.txt".format(self.current_customer_profile['customer_profile']['card_number']),"w")
+            for transaction in self.customers_dict[customer_id]["accounts"][account_type_word]["transactions"]:
+                f.write(transaction["time"] + " " + transaction["type"] + " " + str(transaction["balance_before"]) + " " + str(transaction["balance_after"]) + " " + transaction["status"] + " " + transaction["description"]+"\n")
+            f.close()
+            print("{}_transactions.txt created".format(self.current_customer_profile['customer_profile']['card_number']))
+            return True
+        else:
+            return False
+
 
     def create_account(self,customer_id,account_type):
         self.customers_dict = self._load_from_file()
         account_type_word = ''
         if account_type == "1":
             account_type_word = "chequing"
-        elif account_type_word == "2":
-            account_type_word = "saving"
+        elif account_type == "2":
+            account_type_word = "savings"
 
-        if not self.customers_dict[customer_id]["accounts"]:
+        if account_type_word not in self.customers_dict[customer_id]["accounts"]:
             new_account = {
                 "balance": 0,
                 "transactions": []
             }
             self.customers_dict[customer_id]["accounts"][account_type_word]=new_account
             self._save_to_file()
+            return True
         else:
-            print("Account already exists")
-
-
+            return False
 
 if __name__ == '__main__':
     pass

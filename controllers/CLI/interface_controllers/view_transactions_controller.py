@@ -8,13 +8,34 @@ class ViewTransactionsController():
         self.view_transactions()
 
     def view_transactions(self):
-        customer_id = input("Please enter an id of a customer to see transactions: ")
-        self.main_controller.cancel_check(customer_id)
+        # customer_id = input("Please enter an id of a customer to see transactions: ")
+        # self.main_controller.cancel_check(customer_id)
+        #
+        # customer_id = input('Please enter an id of a customer to see transactions: ')
+        # account_type = input('Please enter account type(1: for chequing or 2: for saving): ')
+        # self.main_controller.customer_model.view_customer_transactions(customer_id, account_type)
+        # while 1:
+        #     continue_option = input('Press any key to continue: ')
+        #     break
+        # self.main_controller.change_controller('main_menu')
 
-        customer_id = input('Please enter an id of a customer to see transactions: ')
-        account_type = input('Please enter account type(1: for chequing or 2: for saving): ')
-        self.main_controller.customer_model.view_customer_transactions(customer_id, account_type)
-        while 1:
-            continue_option = input('Press any key to continue: ')
-            break
-        self.main_controller.change_controller('main_menu')
+
+        transaction_string = ''
+
+        if self.main_controller.customer_model.current_customer_profile != None:
+            print('Pick an account to create:\n\t1. Chequing\n\t2. Savings\n')
+            account_type_choice = input()
+            transaction_string = self.main_controller.customer_model.view_customer_transactions(
+                self.main_controller.customer_model.current_customer_profile['customer_id'], account_type_choice)
+            print(transaction_string)
+
+        if transaction_string != '':
+            while 1:
+                input('Viewing transactions successful! Press enter to continue.')
+                break
+            self.main_controller.reset_session()
+        else:
+            while 1:
+                input('Viewing transactions failed! Press enter to continue.')
+                break
+            self.main_controller.reset_session()

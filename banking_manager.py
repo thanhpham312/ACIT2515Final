@@ -2,6 +2,9 @@ from tkinter import *
 from controllers.CLI.main_cli_controller import MainCLIController
 
 class BankingManager():
+    '''
+    Main file to run the admin side to control and manage the accounts
+    '''
     def __init__(self):
         self.main_controller = MainCLIController()
         self.main_controller.change_controller('login')

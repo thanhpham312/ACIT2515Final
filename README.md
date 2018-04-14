@@ -38,6 +38,8 @@ The functions available for admin are:
     >Delete account for specific customer
     >View transaction log for specific customer
     >Print transaction log for specific customer
+    >Exit in non-main menu screen and return to main menu screen, by typing <:q>
+    >Asks for the PIN confirmation from the user. For test purpose, type <1234>
 
 To create new profile:
     1. Start the application from the command line. Type <python banking_manager.py>

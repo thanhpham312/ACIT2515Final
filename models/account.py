@@ -3,6 +3,10 @@ from models.transaction import Transaction
 from models.fee import Fee
 
 class Account():
+    '''
+    Account model, that asks for account type, balance and list of transactions
+    It has its functions to manage account.
+    '''
     def __init__(self, type="normal", balance=0, transaction_list=[]):
         self.__type = type
         self.__balance = balance
@@ -29,6 +33,11 @@ class Account():
         self.__transaction_list = list
 
     def deposit(self, deposit_amount):
+        '''
+        Deposing money on the account, writes to a json file for specific user. Checks for type validations.
+        :param deposit_amount: Amount to deposit
+        :return:None
+        '''
         try:
             deposit_amount = float(deposit_amount)
             if deposit_amount < 0:
@@ -52,6 +61,11 @@ class Account():
 
 
     def withdraw(self, withdraw_amount):
+        '''
+        withdraw money from the account, writes to a json file for specific user. Checks for type validations.
+        :param withdraw_amount: amount to withdraw from account
+        :return:None
+        '''
         try:
             withdraw_amount = float(withdraw_amount)
             if withdraw_amount < 0:
@@ -90,6 +104,10 @@ class Account():
         return "type: {}\nbalance: {}\ntransaction_list: {}".format(self.type, self.balance, self.transaction_list)
 
 class ChequingAccount(Account):
+    '''
+    Chequing account and its functions. Child of Account type. It is different with its fees.
+    Has minimun negative limit $500.
+    '''
     def __init__(self, type="chequing", balance=0, transaction_list=[]):
         super().__init__(type, balance, transaction_list)
         self.__overdraft = -500.0
@@ -100,6 +118,11 @@ class ChequingAccount(Account):
         return self.__fees
 
     def withdraw(self, withdraw_amount):
+        '''
+                withdraw money from the account, writes to a json file for specific user. Checks for type validations.
+                :param withdraw_amount: amount to withdraw from account
+                :return:None
+                '''
         try:
             withdraw_amount = float(withdraw_amount)
             if withdraw_amount < 0:
@@ -143,6 +166,9 @@ class ChequingAccount(Account):
             return False
 
 class SavingsAccount(Account):
+    '''
+    Saving account does not have negative limit
+    '''
     def __init__(self, type="savings", balance=0, transaction_list=[]):
         super().__init__(type, balance, transaction_list)
         self.__fees = Fee(self)
@@ -152,6 +178,11 @@ class SavingsAccount(Account):
         return self.__fees
 
     def withdraw(self, withdraw_amount):
+        '''
+                withdraw money from the account, writes to a json file for specific user. Checks for type validations.
+                :param withdraw_amount: amount to withdraw from account
+                :return:None
+                '''
         try:
             withdraw_amount = float(withdraw_amount)
             if withdraw_amount < 0:

@@ -3,6 +3,9 @@ import datetime
 from models.transaction import Transaction
 
 class Fee():
+    '''
+    Class model for different fees
+    '''
     def __init__(self, account, file_name = './models/data/fees.json'):
         self.__account = account
         self.__file_name = file_name
@@ -22,6 +25,11 @@ class Fee():
             return abs(self.__account.balance*self.__fee_list[fee_type]['amount'])
 
     def _charge_fee(self, fee_type):
+        '''
+        Charges fees from the current account of the current user.
+        :param fee_type: Amount of fees to charge
+        :return:
+        '''
         before_balance = self.__account.balance
         transaction_description = "Fee charged - " + fee_type + '.'
         if self.__fee_list[fee_type]['type'] == "set_amount":

@@ -10,12 +10,22 @@ from controllers.CLI.interface_controllers.print_transactions_controller import 
 from controllers.CLI.interface_controllers.choose_customer_profile_controller import ChooseCustomerProfileController
 
 class MainCLIController():
+    '''
+    Main controller for changing the current controller's view and controllers.
+    Is main part for references from other controllers
+    '''
     def __init__(self):
         self.current_interface_controller = None
         self.employee_model = None
         self.customer_model = None
 
-    def change_controller(self, controller, next_screen=None, message='', next_controller=None):
+    def change_controller(self, controller, next_controller=None):
+        '''
+        Controller Changer for the assigning current view a new controller.
+        :param controller:current controller
+        :param next_controller:controller, that we want to switch.
+        :return:None
+        '''
         os.system('cls' if os.name == 'nt' else 'clear')
         self.current_interface_controller = None
         if controller == 'main_menu':

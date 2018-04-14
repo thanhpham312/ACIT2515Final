@@ -18,7 +18,7 @@ class PrintTransactionsController():
 
         success = False
         if self.main_controller.customer_model.current_customer_profile != None:
-            print('Pick an account to create:\n\t1. Chequing\n\t2. Savings\n')
+            print('Pick an account type to print transactions:\n\t1. Chequing\n\t2. Savings\n')
             account_type_choice = input()
             if self.main_controller.customer_model.print_customer_transactions(
                     self.main_controller.customer_model.current_customer_profile['customer_id'],

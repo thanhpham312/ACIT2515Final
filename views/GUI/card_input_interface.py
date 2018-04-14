@@ -1,4 +1,5 @@
 from tkinter import *
+from views.assets.constants import *
 
 
 class CardInputInterface():
@@ -20,7 +21,8 @@ class CardInputInterface():
 
         # widgets
 
-        self.top_label = Label(self.top_frame, text="Please enter your card number", font=("Courier", 20))
+        self.top_label = Label(self.top_frame, text="Please enter your card number:", font=("Courier", 20))
+        self.bottom_label = Label(self.middle_frame, text="Please enter your PIN:", font=("Courier", 20))
         self.card_entry = Entry(self.middle_frame, font=("Courier", 35), justify=CENTER)
         self.pin_entry = Entry(self.middle_frame, font=("Courier", 35), justify=CENTER, show="*")
         self.bottom_cancel_button = Button(self.bottom_frame, text="Cancel", font=("Courier", 20), width=30, height=1)
@@ -40,6 +42,7 @@ class CardInputInterface():
         self.middle_frame.columnconfigure(0, weight=1)
         self.middle_frame.rowconfigure(0, weight=1)
         self.middle_frame.rowconfigure(1, weight=1)
+        self.middle_frame.rowconfigure(2, weight=1)
 
         self.bottom_frame.columnconfigure(0, weight=1)
         self.bottom_frame.columnconfigure(1, weight=1)
@@ -47,15 +50,16 @@ class CardInputInterface():
 
 
         self.top_label.grid(row=0, column=0, sticky=NSEW, padx=10, pady=10)
-        self.card_entry.grid(row=0, column=0, sticky=NSEW, padx=30, pady=20)
-        self.pin_entry.grid(row=1, column=0, sticky=NSEW, padx=30, pady=20)
-        self.bottom_cancel_button.grid(row=0, column=0, sticky=NSEW, padx=(10,50), pady=50)
-        self.bottom_continue_button.grid(row=0, column=1, sticky=NSEW, padx=(50,10), pady=50)
+        self.bottom_label.grid(row=1, column=0, sticky=NSEW, padx=10, pady=10)
+        self.card_entry.grid(row=0, column=0, sticky=NSEW, padx=30, pady=10)
+        self.pin_entry.grid(row=2, column=0, sticky=NSEW, padx=30, pady=10)
+        self.bottom_cancel_button.grid(row=0, column=0, sticky=NSEW, padx=(10,50), pady=35)
+        self.bottom_continue_button.grid(row=0, column=1, sticky=NSEW, padx=(50,10), pady=35)
 
 
 if __name__ == '__main__':
     root = Tk()
-    root.geometry('600x450')
+    root.geometry(str(WINDOW_WIDTH) + 'x' + str(WINDOW_HEIGHT))
     CardInputInterface(root)
     mainloop()
 

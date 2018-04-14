@@ -15,7 +15,7 @@ class MainCLIController():
         self.employee_model = None
         self.customer_model = None
 
-    def change_controller(self, controller, next_screen=None, message='', next_controller=None):
+    def change_controller(self, controller, next_controller=None):
         os.system('cls' if os.name == 'nt' else 'clear')
         self.current_interface_controller = None
         if controller == 'main_menu':

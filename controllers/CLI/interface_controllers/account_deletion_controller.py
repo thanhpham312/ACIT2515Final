@@ -20,7 +20,7 @@ class AccountDeletionController():
         success = False
 
         if self.main_controller.customer_model.current_customer_profile != None:
-            print('Pick an account to create:\n\t1. Chequing\n\t2. Savings\n')
+            print('Pick an account type to delete:\n\t1. Chequing\n\t2. Savings\n')
             account_type_choice = input()
             if self.main_controller.customer_model.delete_customer_account(self.main_controller.customer_model.current_customer_profile['customer_id'], account_type_choice):
                 success = True

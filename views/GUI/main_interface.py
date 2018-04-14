@@ -20,15 +20,19 @@ class MainInterface():
         self.main_interface_frame = Frame(self.master)
 
         # Gridding:
-        self.master.rowconfigure(0, weight=1)
+        # self.master.rowconfigure(0, weight=9)
+        # self.master.rowconfigure(1, weight=1)
         self.master.columnconfigure(0, weight=1)
 
-        self.main_interface_frame.grid(row=0, column=0, padx=20, pady=20, sticky=N + S + E + W)
+        self.bank_logo = Label(self.master, text='VITHIV BANKING', font=("Courier", 40, 'bold'), justify=CENTER)
+
+        self.bank_logo.grid(row=0, column=0, padx=20, pady=20, sticky=N + S + E + W)
+        self.main_interface_frame.grid(row=1, column=0, padx=20, pady=20, sticky=N + S + E + W)
 
     def redraw_main_interface_frame(self):
         self.main_interface_frame.destroy()
         self.main_interface_frame = Frame(self.master)
-        self.main_interface_frame.grid(row=0, column=0, padx=20, pady=20, sticky=N + S + E + W)
+        self.main_interface_frame.grid(row=1, column=0, padx=20, pady=20, sticky=N + S + E + W)
 
 if __name__ == '__main__':
     root = Tk()

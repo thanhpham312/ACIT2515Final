@@ -13,7 +13,7 @@ class ViewTransactionsController():
         transaction_string = ''
 
         if self.main_controller.customer_model.current_customer_profile != None:
-            print('Pick an account to create:\n\t1. Chequing\n\t2. Savings\n')
+            print('Pick an account type to view transactions:\n\t1. Chequing\n\t2. Savings\n')
             account_type_choice = input()
             transaction_string = self.main_controller.customer_model.view_customer_transactions(
                 self.main_controller.customer_model.current_customer_profile['customer_id'], account_type_choice)

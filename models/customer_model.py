@@ -55,14 +55,22 @@ class CustomerModelForClient(CustomerModel):
     def current_account(self, account):
         self.__current_account = account
 
+    def change_pin(self, new_pin):
+        customers_dict = {}
+        with open(self.file_name, 'r') as f:
+            customers_dict = json.load(f)
+        with open(self.file_name, 'w') as f:
+            customers_dict[self.customer_id]['pin'] = new_pin
+            json.dump(customers_dict, f, indent=2)
+
     def _save_to_file(self):
-        customer_dict = {}
+        customers_dict = {}
         self.customer_account_dict[self.current_account.type] = self.current_account._to_dict()
         with open(self.file_name, 'r') as f:
-            customer_dict = json.load(f)
+            customers_dict = json.load(f)
         with open(self.file_name, 'w') as f:
-            customer_dict[self.customer_id]['accounts'] = self.customer_account_dict
-            json.dump(customer_dict, f, indent=2)
+            customers_dict[self.customer_id]['accounts'] = self.customer_account_dict
+            json.dump(customers_dict, f, indent=2)
 
     def _load_customer(self):
         customers_dict = self._load_from_file()

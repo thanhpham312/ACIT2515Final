@@ -6,7 +6,7 @@ from models.customer_model import CustomerModelForClient
 class CardInputController():
     def __init__(self, main_controller):
         self.main_controller = main_controller
-        main_controller.main_interface.master.title('Enter Card Number')
+        self.main_controller.main_interface.master.title('Enter Card Number')
         self.card_input_interface = CardInputInterface(main_controller.main_interface.main_interface_frame)
 
         self.card_input_interface.bottom_cancel_button.config(command=self.main_controller.reset)

@@ -4,7 +4,7 @@ from views.GUI.deposit_interface import DepositInterface
 class DepositController():
     def __init__(self, main_controller):
         self.main_controller = main_controller
-        main_controller.main_interface.master.title('Deposit')
+        self.main_controller.main_interface.master.title('Deposit')
         self.deposit_interface = DepositInterface(main_controller.main_interface.main_interface_frame)
         self.deposit_interface.bottom_cancel_button.config(command=lambda:
             self.main_controller.change_controller('confirm', message='Transaction cancelled'))

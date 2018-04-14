@@ -1,5 +1,4 @@
 from views.GUI.main_interface import MainInterface
-from controllers.GUI.interface_controllers.pin_controller import PinController
 from controllers.GUI.interface_controllers.main_menu_controller import MainMenuController
 from controllers.GUI.interface_controllers.quick_cash_controller import QuickCashController
 from controllers.GUI.interface_controllers.withdraw_controller import WithdrawController
@@ -8,6 +7,8 @@ from controllers.GUI.interface_controllers.check_balance_controller import Check
 from controllers.GUI.interface_controllers.card_input_controller import CardInputController
 from controllers.GUI.interface_controllers.account_choice_controller import AccountChoiceController
 from controllers.GUI.interface_controllers.confirm_controller import ConfirmController
+from controllers.GUI.interface_controllers.change_pin_controller import ChangePinController
+from controllers.GUI.interface_controllers.confirm_pin_change_controller import ConfirmPinChangeController
 
 
 class MainClientController():
@@ -21,12 +22,10 @@ class MainClientController():
         # self.current_account = AccountModelForClient(account_file_name)
         # self.current_account._set_current_account(self.current_user.current_user_id)
 
-    def change_controller(self, controller, next_screen = None, message=''):
+    def change_controller(self, controller, next_screen = None, message='', new_pin=None):
         self.main_interface.redraw_main_interface_frame()
         del self.current_interface_controller
-        if controller == 'pin':
-            self.current_interface_controller = PinController(self)
-        elif controller == 'main_menu':
+        if controller == 'main_menu':
             self.current_interface_controller = MainMenuController(self)
         elif controller == 'quick_cash':
             self.current_interface_controller = QuickCashController(self)
@@ -42,6 +41,10 @@ class MainClientController():
             self.current_interface_controller = AccountChoiceController(self, next_screen)
         elif controller == 'confirm':
             self.current_interface_controller = ConfirmController(self, message)
+        elif controller == 'pin_change':
+            self.current_interface_controller = ChangePinController(self)
+        elif controller == 'pin_change_confirm':
+            self.current_interface_controller = ConfirmPinChangeController(self, new_pin)
 
     def reset(self):
         self.current_interface_controller = None

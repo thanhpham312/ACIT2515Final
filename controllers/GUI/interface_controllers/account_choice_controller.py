@@ -5,7 +5,7 @@ class AccountChoiceController():
     def __init__(self, main_controller, next_screen):
         self.main_controller = main_controller
         self.next_screen = next_screen
-        main_controller.main_interface.master.title('Choose Account')
+        self.main_controller.main_interface.master.title('Choose Account')
         self.account_type_check_interface = AccounChoiceInterface(main_controller.main_interface.main_interface_frame)
 
         self.account_type_check_interface.bottom_savings_button.config(command=lambda:

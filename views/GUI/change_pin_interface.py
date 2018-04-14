@@ -1,7 +1,7 @@
 from tkinter import *
 
 
-class PinInputInterface():
+class ChangePinInterface():
 
     def __init__(self, master: Frame):
         self.master = master
@@ -54,7 +54,7 @@ class PinInputInterface():
 if __name__ == '__main__':
     root = Tk()
     root.geometry('600x450')
-    PinInputInterface(root)
+    ChangePinInterface(root)
     mainloop()
 
 

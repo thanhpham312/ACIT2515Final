@@ -3,7 +3,7 @@ from views.GUI.check_balance_interface import CheckBalanceInterface
 class CheckBalanceController():
     def __init__(self, main_controller):
         self.main_controller = main_controller
-        main_controller.main_interface.master.title('Check Balance')
+        self.main_controller.main_interface.master.title('Check Balance')
         self.check_balance_interface = CheckBalanceInterface(main_controller.main_interface.main_interface_frame)
 
         # self.check_balance_interface.button1.config()

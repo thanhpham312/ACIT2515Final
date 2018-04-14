@@ -4,7 +4,7 @@ from views.GUI.withdraw_interface import WithdrawInterface
 class WithdrawController():
     def __init__(self, main_controller):
         self.main_controller = main_controller
-        main_controller.main_interface.master.title('Withdrawal')
+        self.main_controller.main_interface.master.title('Withdrawal')
         self.withdraw_interface = WithdrawInterface(main_controller.main_interface.main_interface_frame)
         self.withdraw_interface.right_amount_20_button.config(command=lambda: self.withdraw(20))
         self.withdraw_interface.right_amount_40_button.config(command=lambda: self.withdraw(40))

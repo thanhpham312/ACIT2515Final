@@ -20,7 +20,7 @@ class ConfirmPinChangeInterface():
 
         # widgets
 
-        self.top_label = Label(self.top_frame, text="Please enter your old pin\n to confirm change", font=("Courier", 20))
+        self.top_label = Label(self.top_frame, text="Enter new PIN again\n to confirm change", font=("Courier", 20))
         self.pin_entry = Entry(self.middle_frame, font=("Courier", 35), justify=CENTER, show="*")
         self.bottom_cancel_button = Button(self.bottom_frame, text="Cancel", font=("Courier", 20), width=30, height=1)
         self.bottom_continue_button = Button(self.bottom_frame, text="Continue", font=("Courier", 20), width=30, height=1)

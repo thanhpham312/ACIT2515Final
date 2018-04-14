@@ -40,7 +40,6 @@ class EmployeeModel():
 
 
 
-
 # class EmployeeModelForClient(EmployeeModel):
 #     def __init__(self, file_name, username, password):
 #         super().__init__(file_name)

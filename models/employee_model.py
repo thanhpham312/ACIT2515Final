@@ -1,4 +1,5 @@
 import json
+import hashlib
 
 class EmployeeModel():
     def __init__(self, file_name, username, password):

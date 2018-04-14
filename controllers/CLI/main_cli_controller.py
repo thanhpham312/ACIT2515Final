@@ -39,3 +39,9 @@ class MainCLIController():
         self.employee_model = None
         self.customer_model = None
         self.change_controller('login')
+
+    def cancel_check(self, input_text):
+        if input_text == ':q':
+            self.current_interface_controller = None
+            self.customer_model = None
+            self.change_controller('main_menu')

@@ -385,7 +385,12 @@
     "card_type": "VISA",
     "pin": "bddeec6c6cf052df5c18c5a2f7ff798f195cc3c84e8d58adb9ab49ee6854a87c",
     "name": "aldrich",
-    "accounts": {}
+    "accounts": {
+      "chequing": {
+        "balance": 0,
+        "transactions": []
+      }
+    }
   },
   "9": {
     "card_number": "20180412210412",

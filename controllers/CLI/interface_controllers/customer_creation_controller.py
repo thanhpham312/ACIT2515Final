@@ -9,7 +9,9 @@ class CustomerCreationController():
 
     def create_customer(self):
         name = input('Please enter a name for new customer: ')
+        self.main_controller.cancel_check(name)
         pin = input('Choose a pin: ')
+        self.main_controller.cancel_check(pin)
         try:
             int(pin)
             self.main_controller.customer_model.create_customer(name, pin)

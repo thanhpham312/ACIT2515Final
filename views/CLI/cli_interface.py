@@ -25,34 +25,40 @@ class CustomerCreationInterface():
     def __init__(self):
         print('\n' + '-' * 50)
         print('Please enter the following information to create a new customer profile:')
+        print('Enter :q to go back to the main menu')
         print('-' * 50 + '\n')
 
 class CustomerDeletionInterface():
     def __init__(self):
         print('\n' + '-' * 50)
         print('Please enter the customer ID to continue:')
+        print('Enter :q to go back to the main menu')
         print('-' * 50 + '\n')
 
 class AccountCreationInterface():
     def __init__(self):
         print('\n' + '-' * 50)
         print('Please enter the customer ID to continue:')
+        print('Enter :q to go back to the main menu')
         print('-' * 50 + '\n')
 
 class AccountDeletionInterface():
     def __init__(self):
         print('\n' + '-' * 50)
         print('Please enter the following information to delete an user account:')
+        print('Enter :q to go back to the main menu')
         print('-' * 50 + '\n')
 
 class ViewTransactionInterface():
     def __init__(self):
         print('\n' + '-' * 50)
         print('Please enter the following information to view transactions for an user account:')
+        print('Enter :q to go back to the main menu')
         print('-' * 50 + '\n')
 
 class PrintTransactionInterface():
     def __init__(self):
         print('\n' + '-' * 50)
         print('Please enter the following information to print transactions for an user account:')
+        print('Enter :q to go back to the main menu')
         print('-' * 50 + '\n')

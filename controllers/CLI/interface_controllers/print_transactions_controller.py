@@ -9,6 +9,9 @@ class PrintTransactionsController():
 
     def print_transactions(self):
         customer_id = input('Please enter an id of a customer to see transactions: ')
+        self.main_controller.cancel_check(customer_id)
+
+        customer_id = input('Please enter an id of a customer to see transactions: ')
         account_type = input('Please enter account type(1: for chequing or 2: for saving): ')
         self.main_controller.customer_model.print_customer_transactions(customer_id, account_type)
         while 1:

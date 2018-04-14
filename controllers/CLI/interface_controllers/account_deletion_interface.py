@@ -8,6 +8,9 @@ class AccountDeletionController():
         self.delete_account()
 
     def delete_account(self):
+        customer_id = input("Enter the customer id: ")
+        self.main_controller.cancel_check(customer_id)
+
         while 1:
             customer_id = input("Enter the customer id: ")
             self.main_controller.customer_model.delete_customer(customer_id)

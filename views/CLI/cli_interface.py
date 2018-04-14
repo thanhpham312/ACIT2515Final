@@ -62,3 +62,10 @@ class PrintTransactionInterface():
         print('Please enter the following information to print transactions for an user account:')
         print('Enter :q to go back to the main menu')
         print('-' * 50 + '\n')
+
+class ChooseCustomerProfileInterface():
+    def __init__(self):
+        print('\n' + '-' * 50)
+        print('Enter customer information to continue:')
+        print('Enter :q to go back to the main menu')
+        print('-' * 50 + '\n')

@@ -18,7 +18,7 @@ class LoginController():
             self.main_controller.employee_model._load_employee()
             if self.main_controller.employee_model.employee_id != None:
                 self.main_controller.customer_model = CustomerModelForCLI('./models/data/customers.json')
-                self.main_controller.change_controller('main_menu')
+                self.main_controller.reset_session()
                 break
             else:
                 while 1:

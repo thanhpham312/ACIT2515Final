@@ -91,6 +91,7 @@ class CustomerModelForCLI(CustomerModel):
     def __init__(self, file_name):
         super().__init__(file_name)
         self.__customers_dict = self._load_from_file()
+        self.__current_customer_profile = None
 
     @property
     def customers_dict(self):
@@ -99,6 +100,14 @@ class CustomerModelForCLI(CustomerModel):
     @customers_dict.setter
     def customers_dict(self, dict):
         self.__customers_dict = dict
+
+    @property
+    def current_customer_profile(self):
+        return self.__current_customer_profile
+
+    @current_customer_profile.setter
+    def current_customer_profile(self, dict):
+        self.__current_customer_profile = dict
 
     def _save_to_file(self):
         with open(self.file_name, 'w') as f:
@@ -119,14 +128,18 @@ class CustomerModelForCLI(CustomerModel):
             "name": name,
             "accounts": []
         }
-        new_customer_id = str(len(self.customers_dict.keys()) + 1)
+        new_customer_id = str(max([int(id) for id in self.customers_dict.keys()]) + 1)
         self.customers_dict[new_customer_id] = new_customer_object
         self._save_to_file()
 
     def delete_customer(self, customer_id):
-        self.customers_dict = self._load_from_file()
-        self.customers_dict[customer_id] = {}
-        self._save_to_file()
+        try:
+            self.customers_dict = self._load_from_file()
+            del self.customers_dict[customer_id]
+            self._save_to_file()
+            return True
+        except:
+            return False
 
     def delete_customer_account(self,customer_id,account_type):
         account_type_word = ''

@@ -11,7 +11,7 @@ class AccountDeletionController():
         customer_id = input("Enter the customer id: ")
         self.main_controller.cancel_check(customer_id)
         account_type = input('Enter the account type: 1-chequing; 2-saving: ')
-        self.main_controller.cancel_check(account_type)
+        self.main_controller.cancel_check(customer_id)
         self.main_controller.customer_model.delete_customer_account(customer_id, account_type)
         print('Customer deletion successful!')
         self.main_controller.change_controller('main_menu')

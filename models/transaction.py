@@ -1,4 +1,7 @@
 class Transaction():
+    '''
+    Model for the transactions
+    '''
     def __init__(self, account, time, type, balance_before, balance_after, status, description):
         self.__account = account
         self.__time = time

@@ -3,7 +3,7 @@ from views.CLI.cli_interface import PrintTransactionInterface
 
 class PrintTransactionsController():
     """
-    Controller to print transactions
+    Controller to print transactions to a separate file in the /models/data directory.
     """
     def __init__(self, main_controller):
         self.main_controller = main_controller

@@ -2,6 +2,9 @@ import json
 import hashlib
 
 class EmployeeModel():
+    '''
+    Model for the employees
+    '''
     def __init__(self, file_name, username, password):
         self.__file_name = file_name
         self.__username = username
@@ -25,14 +28,27 @@ class EmployeeModel():
         self.__employee_id = id
 
     def _load_from_file(self):
+        '''
+        Loads info from the json file
+        :return:
+        '''
         with open(self.file_name, 'r') as f:
             return json.load(f)
 
     def _save_to_file(self, data):
+        '''
+        Saves to the specified file
+        :param data:Data to be saved.
+        :return:
+        '''
         with open(self.file_name, 'w') as f:
             json.dump(data, f, indent=4)
 
     def _load_employee(self):
+        '''
+        Loads the current employee and assigned it to the current employee
+        :return:
+        '''
         employees_dict = self._load_from_file()
         for employee_id, employee_object in employees_dict.items():
             if self.__username == employee_object['username'] and self.__password == employee_object['password']:

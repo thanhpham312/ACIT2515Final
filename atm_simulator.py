@@ -2,6 +2,9 @@ from tkinter import *
 from controllers.GUI.main_client_controller import MainClientController
 
 class ATMSimulator():
+    '''
+    Main file to run to start the atm simulator
+    '''
     def __init__(self):
         self.root = Tk()
         self.main_controller = MainClientController(self.root)

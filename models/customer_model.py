@@ -126,7 +126,7 @@ class CustomerModelForCLI(CustomerModel):
             "card_type": "VISA",
             "pin": hash_pin,
             "name": name,
-            "accounts": []
+            "accounts": {}
         }
         new_customer_id = str(max([int(id) for id in self.customers_dict.keys()]) + 1)
         self.customers_dict[new_customer_id] = new_customer_object
@@ -148,7 +148,8 @@ class CustomerModelForCLI(CustomerModel):
         elif account_type_word == "2":
             account_type_word = "saving"
         self.customers_dict = self._load_from_file()
-        self.customers_dict[customer_id][account_type_word] = {}
+        if self.customers_dict[customer_id]["accounts"]:
+            del self.customers_dict[customer_id]["accounts"][account_type_word]
         self._save_to_file()
 
     def view_customer_transactions(self,account_id, account_type):
@@ -186,7 +187,6 @@ class CustomerModelForCLI(CustomerModel):
             account_type_word = "saving"
 
         if not self.customers_dict[customer_id]["accounts"]:
-            print("List is empty")
             new_account = {
                 "balance": 0,
                 "transactions": []

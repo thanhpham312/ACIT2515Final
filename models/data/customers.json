@@ -6,7 +6,7 @@
     "name": "Viktor",
     "accounts": {
       "chequing": {
-        "balance": 1585.5,
+        "balance": 1544.0,
         "transactions": [
           {
             "time": "2018-04-10 19:47:47.074635",
@@ -207,6 +207,22 @@
             "balance_after": 1585.5,
             "status": "succeeded",
             "description": "Deposit succeeded."
+          },
+          {
+            "time": "2018-04-13 17:49:08.793119",
+            "type": "withdrawal",
+            "balance_before": 1585.5,
+            "balance_after": 1545.5,
+            "status": "succeeded",
+            "description": "Withdrawal succeeded."
+          },
+          {
+            "time": "2018-04-13 17:49:08.793119",
+            "type": "transaction fee",
+            "balance_before": 1545.5,
+            "balance_after": 1544.0,
+            "status": "success",
+            "description": "Fee charged - withdraw_fee."
           }
         ]
       },
@@ -379,12 +395,5 @@
         "transactions": []
       }
     }
-  },
-  "9": {
-    "card_number": "20180413190657",
-    "card_type": "VISA",
-    "pin": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
-    "name": "iVAN",
-    "accounts": []
   }
 }

@@ -2,18 +2,22 @@ from views.CLI.cli_interface import MainMenuInterface
 
 class MainMenuController():
     '''
-    Main menu controller. It is controller responsible for data input and changing the views for the admin.
+        Controller class for the MainMenuInterface view.
+
+        Attributes:
+            main_controller: a reference to the main controller object
+            main_menu_interface: the view this class controls
+
+        Methods:
+            check_option: re-initialize the current controller based on user input
     '''
     def __init__(self, main_controller):
         self.main_controller = main_controller
-        self.login_interface = MainMenuInterface(self.main_controller.employee_model.username)
+        self.main_menu_interface = MainMenuInterface(self.main_controller.employee_model.username)
         self.check_option()
 
     def check_option(self):
-        '''
-        Asks for admin input in order to switch to different views anf functions.
-        :return:None
-        '''
+
         while 1:
             option = input('Enter a number to continue: ')
             if option == "1":

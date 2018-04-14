@@ -5,7 +5,14 @@ from models.account import ChequingAccount, SavingsAccount
 
 class CustomerModel():
     '''
-    Model for customer, his information place staroge and functions
+        Model for a customer profile
+
+        Attributes:
+            __file_name: location of the customer data
+
+        Methods:
+            _load_from_file: load customer data from database
+            _save_to_file: save customer data to database
     '''
     def __init__(self, file_name='./models/data/customers.json'):
         self.__file_name = file_name
@@ -27,7 +34,21 @@ class CustomerModel():
 
 class CustomerModelForClient(CustomerModel):
     '''
-    Same as customer, but with the curd number, PIN.
+        Model for a customer profile for the GUI, inherited from the base customer model
+
+        Attributes:
+            All attributes from the base customer class
+            __card_number: the customer's card number
+            __pin: the customer's pin
+            __customer_id: the customer's id
+            __customer_name: the customer's name
+            __current_account: the customer's current account that they are interacting with
+
+        Methods:
+            change_pin: Change the customer's PIN
+            _load_customer: Populate the class' attribute with data from the database
+            _set_current_account: determines the account the customer is interacting with
+            check_blank_account_list: check if account list for the current customer is empty
     '''
     def __init__(self, file_name, card_number, pin):
         super().__init__(file_name)
@@ -70,10 +91,7 @@ class CustomerModelForClient(CustomerModel):
             json.dump(customers_dict, f, indent=2)
 
     def _save_to_file(self):
-        '''
-        Saves current information about the actions, that are done to the account to the json file.
-        :return:None
-        '''
+
         customers_dict = {}
         self.customer_account_dict[self.current_account.type] = self.current_account._to_dict()
         with open(self.file_name, 'r') as f:
@@ -83,11 +101,7 @@ class CustomerModelForClient(CustomerModel):
             json.dump(customers_dict, f, indent=2)
 
     def _load_customer(self):
-        '''
-        Reads the json file and finds all info about the user, set current user
-        Checks match based on the hashed PIN.
-        :return:
-        '''
+
         customers_dict = self._load_from_file()
         input_hash = hashlib.sha256(str.encode(self.__pin)).hexdigest()
         for customer_id, customer_object in customers_dict.items():
@@ -97,13 +111,13 @@ class CustomerModelForClient(CustomerModel):
                 self.customer_account_dict = customers_dict[self.customer_id]['accounts']
                 break
 
+    def check_blank_account_list(self):
+        if len(self.customer_account_dict.keys()) == 0:
+            return False
+        else:
+            return True
 
     def _set_current_account(self, account_type):
-        '''
-        Sets current account to the to the specified account
-        :param account_type: Chequing or saving.
-        :return:None
-        '''
         if len(self.customer_account_dict) != 0:
             if account_type in self.customer_account_dict:
                 if account_type == 'chequing':
@@ -117,7 +131,20 @@ class CustomerModelForClient(CustomerModel):
 
 class CustomerModelForCLI(CustomerModel):
     '''
-    Model for the admin and his commands
+        Model for a customer profile for the GUI, inherited from the base customer model
+
+        Attributes:
+            All attributes from the base customer class
+            __customers_dict: a dictionary with data parsed from the employee database
+            __current_customer_profile: the customer profile the employee is managing
+
+        Methods:
+            create_customer: create a new customer profile
+            delete_customer: delete a customer profile
+            create_account: create anew account for a customer
+            delete_customer_account: delete one of a customer's accounts
+            view_customer_transactions: output the current customer's transaction logs the terminal
+            print_customer_transactions: output the current customer's transaction logs to a file
     '''
     def __init__(self, file_name):
         super().__init__(file_name)
@@ -141,29 +168,17 @@ class CustomerModelForCLI(CustomerModel):
         self.__current_customer_profile = dict
 
     def _save_to_file(self):
-        '''
-        saves to file the current changed information, in json format.
-        :return:None
-        '''
+
         with open(self.file_name, 'w') as f:
             json.dump(self.customers_dict, f, indent=2)
 
     def make_pin_hash(self, pin):
-        '''
-        hashed the pin
-        :param pin: Pin from the user
-        :return:
-        '''
+
         return hashlib.sha256(str.encode(pin)).hexdigest()
 
 
     def create_customer(self, name, pin):
-        '''
-        Creates customer and writes his information as json file
-        :param name: Name if the customer
-        :param pin: PIN of the customer
-        :return: customer
-        '''
+
         self.customers_dict = self._load_from_file()
         new_card_number = datetime.now().strftime('%Y%m%d%H%M%S')
         hash_pin = self.make_pin_hash(pin)
@@ -179,11 +194,7 @@ class CustomerModelForCLI(CustomerModel):
         self._save_to_file()
 
     def delete_customer(self, customer_id):
-        '''
-        deletes customer from the json storage place. Asks for the PIN confirm
-        :param customer_id:ID of the customer
-        :return:
-        '''
+
         try:
             self.customers_dict = self._load_from_file()
             del self.customers_dict[customer_id]
@@ -193,12 +204,7 @@ class CustomerModelForCLI(CustomerModel):
             return False
 
     def delete_customer_account(self,customer_id,account_type):
-        '''
-        delets customer account, that is spesified
-        :param customer_id: Customer ID
-        :param account_type: Account type
-        :return: none
-        '''
+
         account_type_word = ''
         if account_type == "1":
             account_type_word = "chequing"
@@ -214,12 +220,7 @@ class CustomerModelForCLI(CustomerModel):
             return False
 
     def view_customer_transactions(self,customer_id, account_type):
-        '''
-        Prints to the cmd transaction logs for the spasified user
-        :param customer_id: User ID
-        :param account_type: User PIN
-        :return:none
-        '''
+
         account_type_word = ''
         if account_type == "1":
             account_type_word = "chequing"
@@ -237,12 +238,7 @@ class CustomerModelForCLI(CustomerModel):
             return False
 
     def print_customer_transactions(self,customer_id, account_type):
-        '''
-        Prints to the txt file transaction logs for the specified user
-        :param customer_id: User ID
-        :param account_type: Account Type
-        :return:none
-        '''
+
         account_type_word = ''
         if account_type == "1":
             account_type_word = "chequing"
@@ -263,12 +259,7 @@ class CustomerModelForCLI(CustomerModel):
 
 
     def create_account(self,customer_id,account_type):
-        '''
-        Creates the account for the user
-        :param customer_id:User id
-        :param account_type:account type
-        :return:
-        '''
+
         self.customers_dict = self._load_from_file()
         account_type_word = ''
         if account_type == "1":

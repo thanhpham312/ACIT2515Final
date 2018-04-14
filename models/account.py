@@ -4,8 +4,18 @@ from models.fee import Fee
 
 class Account():
     '''
-    Account model, that asks for account type, balance and list of transactions
-    It has its functions to manage account.
+        Model for a bank account
+
+        Attributes:
+            __type: account type
+            __balance: account balance
+            __transaction_list: A list of transactions made by this account
+
+        Methods:
+            deposit: puts money into this account balance
+            withdraw: takes money out of this account balance
+            _to_dict: return a dictionary version of this class
+
     '''
     def __init__(self, type="normal", balance=0, transaction_list=[]):
         self.__type = type
@@ -105,8 +115,16 @@ class Account():
 
 class ChequingAccount(Account):
     '''
-    Chequing account and its functions. Child of Account type. It is different with its fees.
-    Has minimun negative limit $500.
+        Model for a chequing account, inherited from the base account model
+
+        Attributes:
+            All attributes from the base account class
+            __overdraft: overdraft value for the account balance
+            __fees: a fee object, determines the types of fees this account has
+
+        Methods:
+            deposit: puts money into this account balance
+            withdraw: takes money out of this account balance
     '''
     def __init__(self, type="chequing", balance=0, transaction_list=[]):
         super().__init__(type, balance, transaction_list)
@@ -118,11 +136,7 @@ class ChequingAccount(Account):
         return self.__fees
 
     def withdraw(self, withdraw_amount):
-        '''
-                withdraw money from the account, writes to a json file for specific user. Checks for type validations.
-                :param withdraw_amount: amount to withdraw from account
-                :return:None
-                '''
+
         try:
             withdraw_amount = float(withdraw_amount)
             if withdraw_amount < 0:
@@ -167,7 +181,15 @@ class ChequingAccount(Account):
 
 class SavingsAccount(Account):
     '''
-    Saving account does not have negative limit
+        Model for a savings account, inherited from the base account model
+
+        Attributes:
+            All attributes from the base account class
+            __fees: a fee object, determines the types of fees this account has
+
+        Methods:
+            deposit: puts money into this account balance
+            withdraw: takes money out of this account balance
     '''
     def __init__(self, type="savings", balance=0, transaction_list=[]):
         super().__init__(type, balance, transaction_list)

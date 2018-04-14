@@ -4,7 +4,17 @@ from models.transaction import Transaction
 
 class Fee():
     '''
-    Class model for different fees
+        Model for a list of fees charged by the bank
+
+        Attributes:
+            __account: the account the fees belong to
+            __file_name: location of the fee data
+            __fee_list: a list of fees
+            __employee_id: The current employee's id
+        Methods:
+            _load_from_file: load employee data from database
+            _get_fee: out put the fee that will be charged by a transaction
+            _charge_fee: charge a fee for a transaction
     '''
     def __init__(self, account, file_name = './models/data/fees.json'):
         self.__account = account

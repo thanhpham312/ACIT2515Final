@@ -3,7 +3,17 @@ import hashlib
 
 class EmployeeModel():
     '''
-    Model for the employees
+        Model for a employee profile
+
+        Attributes:
+            __file_name: location of the employee data
+            __username: The current employee's username
+            __password: The current employee's password
+            __employee_id: The current employee's id
+        Methods:
+            _load_from_file: load employee data from database
+            _save_to_file: save employee data to database
+            _load_employee: populate the class' attribute with employee data from the database
     '''
     def __init__(self, file_name, username, password):
         self.__file_name = file_name
@@ -28,48 +38,18 @@ class EmployeeModel():
         self.__employee_id = id
 
     def _load_from_file(self):
-        '''
-        Loads info from the json file
-        :return:
-        '''
+
         with open(self.file_name, 'r') as f:
             return json.load(f)
 
     def _save_to_file(self, data):
-        '''
-        Saves to the specified file
-        :param data:Data to be saved.
-        :return:
-        '''
+
         with open(self.file_name, 'w') as f:
             json.dump(data, f, indent=4)
 
     def _load_employee(self):
-        '''
-        Loads the current employee and assigned it to the current employee
-        :return:
-        '''
+
         employees_dict = self._load_from_file()
         for employee_id, employee_object in employees_dict.items():
             if self.__username == employee_object['username'] and self.__password == employee_object['password']:
                 self.employee_id = employee_id
-
-
-
-# class EmployeeModelForClient(EmployeeModel):
-#     def __init__(self, file_name, username, password):
-#         super().__init__(file_name)
-#         self.__username = username
-#         self.__password = password
-#         self.__current_user_id = None
-#         self._set_current_user_id()
-#
-#     @property
-#     def current_user_id(self):
-#         return self.__current_user_id
-#
-#     def _set_current_user_id(self):
-#         for id, user_object in self.user_list['user_list'].items():
-#             if self.__username == user_object['username'] and self.__password == user_object['password']:
-#                 self.__current_user_id = id
-#                 break

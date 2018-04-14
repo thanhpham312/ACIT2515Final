@@ -3,7 +3,7 @@ from controllers.CLI.main_cli_controller import MainCLIController
 
 class BankingManager():
     '''
-    Main file to run the admin side to control and manage the accounts
+        Starting point for the CLI version of the program
     '''
     def __init__(self):
         self.main_controller = MainCLIController()

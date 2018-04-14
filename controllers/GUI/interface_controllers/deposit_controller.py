@@ -2,6 +2,16 @@ from tkinter import messagebox
 from views.GUI.deposit_interface import DepositInterface
 
 class DepositController():
+    '''
+        Controller class for the DepositInterface view.
+
+        Attributes:
+            main_controller: a reference to the main controller object
+            deposit_interface: the view this class controls
+
+        Methods:
+            deposit: Put money into user account using the customer model
+    '''
     def __init__(self, main_controller):
         self.main_controller = main_controller
         self.main_controller.main_interface.master.title('Deposit')

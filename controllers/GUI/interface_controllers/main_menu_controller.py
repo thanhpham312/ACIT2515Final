@@ -2,6 +2,21 @@ from tkinter import messagebox
 from views.GUI.main_menu_interface import MainMenuInterface
 
 class MainMenuController():
+    '''
+        Controller class for the MainMenuInterface view.
+
+        Attributes:
+            main_controller: a reference to the main controller object
+            main_menu_interface: the view this class controls
+
+        Methods:
+            reset: reset the main controller and log user out
+            withdraw_quick_cash: Set the current controller to quick cash
+            withdraw: Set the current controller to withdraw
+            check_balance: Set the current controller to check balance
+            change_pin: Set the current controller to change pin
+
+    '''
     def __init__(self, main_controller):
         self.main_controller = main_controller
         self.main_controller.main_interface.master.title('Main Menu')

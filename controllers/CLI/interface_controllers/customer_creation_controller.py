@@ -3,7 +3,15 @@ from views.CLI.cli_interface import CustomerCreationInterface
 
 class CustomerCreationController():
     '''
-    Creates the profile for the customer
+        Controller class for the CustomerCreationInterface view.
+
+        Attributes:
+            main_controller: a reference to the main controller object
+            account_creation_interface: the view this class controls
+
+        Methods:
+            create_customer: create a new customer profile
+                using main controller's customer model
     '''
     def __init__(self, main_controller):
         self.main_controller = main_controller
@@ -11,11 +19,7 @@ class CustomerCreationController():
         self.create_customer()
 
     def create_customer(self):
-        '''
-        Function creates the profile for customer with name, card number, PIN, card type and accounts
-        Checks for PIN match and input validations
-        :return: None
-        '''
+
         success = False
         name = input('Please enter a name for new customer: ')
         self.main_controller.cancel_check(name)

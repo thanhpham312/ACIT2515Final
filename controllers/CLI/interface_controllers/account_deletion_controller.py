@@ -3,20 +3,23 @@ from views.CLI.cli_interface import AccountDeletionInterface
 
 class AccountDeletionController():
     '''
-    Controller to delete account
-    Parameter - main controller
+        Controller class for the AccountDeletionInterface view.
+
+        Attributes:
+            main_controller: a reference to the main controller object
+            account_deletion_interface: the view this class controls
+
+        Methods:
+            delete_account: delete one of the current customer's accounts
+                using main controller's customer model
     '''
     def __init__(self, main_controller):
         self.main_controller = main_controller
-        self.account_creation_interface = AccountDeletionInterface()
+        self.account_deletion_interface = AccountDeletionInterface()
         self.delete_account()
 
     def delete_account(self):
-        '''
-        Function deletes the account,
-        checks for input validations
-        :return: None
-        '''
+
         success = False
 
         if self.main_controller.customer_model.current_customer_profile != None:

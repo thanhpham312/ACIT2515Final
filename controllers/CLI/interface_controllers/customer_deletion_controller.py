@@ -4,18 +4,23 @@ from views.CLI.cli_interface import CustomerDeletionInterface
 
 class CustomerDeletionController():
     '''
-    Deletes profile for customer
+        Controller class for the CustomerDeletionInterface view.
+
+        Attributes:
+            main_controller: a reference to the main controller object
+            customer_deletion_interface: the view this class controls
+
+        Methods:
+            delete_customer: delete a customer profile
+                using main controller's customer model
     '''
     def __init__(self, main_controller):
         self.main_controller = main_controller
-        self.account_creation_interface = CustomerDeletionInterface()
+        self.customer_deletion_interface = CustomerDeletionInterface()
         self.delete_customer()
 
     def delete_customer(self):
-        '''
-        Fucntion deletes the profile of customer with all transactions logs. Checks for customer PIN mathc
-        :return: None
-        '''
+
         success = False
         if self.main_controller.customer_model.current_customer_profile != None:
             if self.main_controller.customer_model.delete_customer(self.main_controller.customer_model.current_customer_profile['customer_id']):

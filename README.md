@@ -25,6 +25,30 @@ Customer side:
     The process is done so after the transaction completion it is possible to either continue operations, or
     to quit and allow other customer to use it.
 
+####################################### HOW TO START ########################################################
+
+A compiled version of the programs can be found in the dist directory.
+
+For the GUI:
+    1. Open cmd in the same directory as the atm_simulator.py file
+    2. Run with python
+
+For the CLI:
+    1. Open cmd in the same directory as the banking_manager.py file
+    2. Run with python
+    WARNING: THe CLI profram won't work with pycharm's run function.
+
+####################################### LOGIN INFOMATION ####################################################
+
+For the GUI:
+    Card number: 4856673772575768
+    PIN: 1234
+
+For the CLI:
+    username: admin
+    password: password
+
+More customer profiles can be found in the json files located in /models/data
 
 ####################################### INSTRUCTIONS ########################################################
 
@@ -43,7 +67,7 @@ The functions available for admin are:
 
 To create new profile:
     1. Start the application from the command line. Type <python banking_manager.py>
-    2. Login as administrator. (for test purpose, type <a> for admin name and <a> for password.
+    2. Login as administrator. (for test purpose, type <admin> for admin name and <password> for password.
         Note: password will not be displayed.
     3. Type <1> to create account.
     4. Enter the name for new customer and press ENTER.
@@ -109,6 +133,3 @@ To change PIN:
     1. Login, using card number and PIN
     2. Click change PIN.
     3. Type new PIN.
-
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis nibh orci. Phasellus imperdiet interdum eros, eget semper purus pharetra non. Nulla imperdiet felis bibendum tortor posuere venenatis. Ut sem massa, ornare eu tincidunt ac, laoreet sed orci. Maecenas pharetra erat nibh, eget tempus velit consectetur nec. Nullam vel est congue sem vulputate commodo eget non turpis. Integer sollicitudin erat nibh, id interdum neque commodo in. Nunc ipsum elit, sodales eu tempor nec, accumsan in diam. In et faucibus urna. Maecenas et tellus eu risus consequat volutpat. Nulla sed vehicula orci. Donec a nulla dolor. Aenean quis ipsum eu dolor pellentesque aliquam eu eget ipsum. Integer nulla quam, dictum aliquam cursus nec, tristique sit amet velit. Maecenas mollis ipsum vel mi luctus viverra.

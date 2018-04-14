@@ -1,6 +1,16 @@
 from views.GUI.check_balance_interface import CheckBalanceInterface
 
 class CheckBalanceController():
+    '''
+        Controller class for the CheckBalanceInterface view.
+
+        Attributes:
+            main_controller: a reference to the main controller object
+            check_balance_interface: the view this class controls
+
+        Methods:
+            ok: proceed to confirm transaction and promt user to continue or logout
+    '''
     def __init__(self, main_controller):
         self.main_controller = main_controller
         self.main_controller.main_interface.master.title('Check Balance')

@@ -1,6 +1,17 @@
 class Transaction():
     '''
-    Model for the transactions
+        Model for a  transaction log
+
+        Attributes:
+            __account: the account the fees belong to
+            __time: time of the transaction
+            __type: type of the transaction
+            __balance_before: the account balance before the transaction
+            __balance_after: the account balance after the transaction
+            __balance_before: status of the transaction
+            __description: description of the transaction
+        Methods:
+            _to_dict: a dictionary version of the transaction class
     '''
     def __init__(self, account, time, type, balance_before, balance_after, status, description):
         self.__account = account

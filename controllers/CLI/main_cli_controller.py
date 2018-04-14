@@ -11,8 +11,19 @@ from controllers.CLI.interface_controllers.choose_customer_profile_controller im
 
 class MainCLIController():
     '''
-    Main controller for changing the current controller's view and controllers.
-    Is main part for references from other controllers
+        Master controller class for the interface controllers.
+
+        Attributes:
+            current_interface_controller: The current controller that interacts with user
+            employee_model: the model for interacting with employee data
+            customer_model: the model for interacting with customer data
+
+        Methods:
+            change_controller: Change the current controller
+            logout: returns the class attribute to the initial state and change controller to login
+            cancel_check: check user input for quit to menu command
+            reset_session: reset partial data and return user to the main menu
+
     '''
     def __init__(self):
         self.current_interface_controller = None
@@ -20,15 +31,7 @@ class MainCLIController():
         self.customer_model = None
 
     def change_controller(self, controller, next_controller=None):
-<<<<<<< HEAD
-=======
-        '''
-        Controller Changer for the assigning current view a new controller.
-        :param controller:current controller
-        :param next_controller:controller, that we want to switch.
-        :return:None
-        '''
->>>>>>> 91bdcfb8bdbe84e96ddb40df895a1f21ac5a7623
+
         os.system('cls' if os.name == 'nt' else 'clear')
         self.current_interface_controller = None
         if controller == 'main_menu':

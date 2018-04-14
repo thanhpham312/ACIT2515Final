@@ -2,6 +2,7 @@ from views.GUI.main_interface import MainInterface
 from controllers.GUI.interface_controllers.main_menu_controller import MainMenuController
 from controllers.GUI.interface_controllers.quick_cash_controller import QuickCashController
 from controllers.GUI.interface_controllers.withdraw_controller import WithdrawController
+from controllers.GUI.interface_controllers.withdraw_other_controller import WithdrawOtherController
 from controllers.GUI.interface_controllers.deposit_controller import DepositController
 from controllers.GUI.interface_controllers.check_balance_controller import CheckBalanceController
 from controllers.GUI.interface_controllers.card_input_controller import CardInputController
@@ -12,6 +13,19 @@ from controllers.GUI.interface_controllers.confirm_pin_change_controller import 
 
 
 class MainClientController():
+    '''
+        Master controller class for the interface controllers.
+
+        Attributes:
+            root: main tkinter window
+            main_interface: The interface this controller controls
+            customer_model: the model for interacting with customer data
+
+        Methods:
+            change_controller: Change the current controller
+            reset: returns the class attribute to the initial state and change controller to login
+            reset_session: reset partial data and return user to the main menu
+    '''
     def __init__(self, root):
         self.root = root
         self.root.iconbitmap('./views/assets/icons/favicon.ico')
@@ -31,6 +45,8 @@ class MainClientController():
             self.current_interface_controller = QuickCashController(self)
         elif controller == 'withdraw':
             self.current_interface_controller = WithdrawController(self)
+        elif controller == 'withdraw_other':
+            self.current_interface_controller = WithdrawOtherController(self)
         elif controller == 'deposit':
             self.current_interface_controller = DepositController(self)
         elif controller == 'check_balance':

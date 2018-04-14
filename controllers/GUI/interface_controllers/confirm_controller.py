@@ -1,6 +1,14 @@
 from views.GUI.confirm_interface import ConfirmInterface
 
 class ConfirmController():
+    '''
+        Controller class for the ConfirmInterface view.
+        Promt user to continue or logout
+
+        Attributes:
+            main_controller: a reference to the main controller object
+            confirm_interface: the view this class controls
+    '''
     def __init__(self, main_controller, message='Transaction completed'):
         self.main_controller = main_controller
         self.main_controller.main_interface.master.title('Withdrawal')

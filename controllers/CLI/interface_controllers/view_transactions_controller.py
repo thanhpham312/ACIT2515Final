@@ -3,18 +3,22 @@ from views.CLI.cli_interface import ViewTransactionInterface
 
 class ViewTransactionsController():
     '''
-    Class for printing on the current page the transaction logs
+        Controller class for the ViewTransactionInterface view.
+
+        Attributes:
+            main_controller: a reference to the main controller object
+            print_transactions_interface: the view this class controls
+
+        Methods:
+            view_transactions: output the current customer's transaction log to the terminal
     '''
     def __init__(self, main_controller):
         self.main_controller = main_controller
-        self.account_creation_interface = ViewTransactionInterface()
+        self.view_transactions_interface = ViewTransactionInterface()
         self.view_transactions()
 
     def view_transactions(self):
-        '''
-        Controller to print all transaction logs for specific user and specific account.
-        :return:None
-        '''
+
         transaction_string = ''
         if self.main_controller.customer_model.current_customer_profile != None:
             print('Pick an account type to view transactions:\n\t1. Chequing\n\t2. Savings\n')

@@ -3,23 +3,23 @@ from views.CLI.cli_interface import AccountCreationInterface
 
 class AccountCreationController():
     '''
-        Account Creating Controller
-        This is the controller for customer account controller
-        Parameter to pass in the main controller for the class
+        Controller class for the AccountCreationInterface view.
+
+        Attributes:
+            main_controller: a reference to the main controller object
+            account_creation_interface: the view this class controls
+
+        Methods:
+            create_account: Creates a new Chequing or Savings account for the current customer
+                using main controller's customer model
     '''
+
     def __init__(self, main_controller):
         self.main_controller = main_controller
         self.account_creation_interface = AccountCreationInterface()
         self.create_account()
 
     def create_account(self):
-        '''
-        Fucntion, that creates an account for user
-        Checks the validations for inputs
-        :return:
-            none
-        '''
-
         success = False
         if self.main_controller.customer_model.current_customer_profile != None:
             print('Pick an account type to create:\n\t1. Chequing\n\t2. Savings\n')

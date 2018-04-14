@@ -2,11 +2,11 @@
   "1": {
     "card_number": "4856673772575768",
     "card_type": "VISA",
-    "pin": "1234",
+    "pin": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
     "name": "Viktor",
     "accounts": {
       "chequing": {
-        "balance": 1811.0,
+        "balance": 1522.5,
         "transactions": [
           {
             "time": "2018-04-10 19:47:47.074635",
@@ -111,19 +111,212 @@
             "balance_after": 1811.0,
             "status": "succeeded",
             "description": "Deposit succeeded."
+          },
+          {
+            "time": "2018-04-12 12:51:41.033394",
+            "type": "withdrawal",
+            "balance_before": 1811.0,
+            "balance_after": 1411.0,
+            "status": "succeeded",
+            "description": "Withdrawal succeeded."
+          },
+          {
+            "time": "2018-04-12 12:51:41.033394",
+            "type": "transaction fee",
+            "balance_before": 1411.0,
+            "balance_after": 1409.5,
+            "status": "success",
+            "description": "Fee charged - withdraw_fee."
+          },
+          {
+            "time": "2018-04-12 12:51:50.848705",
+            "type": "withdrawal",
+            "balance_before": 1409.5,
+            "balance_after": 1009.5,
+            "status": "succeeded",
+            "description": "Withdrawal succeeded."
+          },
+          {
+            "time": "2018-04-12 12:51:50.848705",
+            "type": "transaction fee",
+            "balance_before": 1009.5,
+            "balance_after": 1008.0,
+            "status": "success",
+            "description": "Fee charged - withdraw_fee."
+          },
+          {
+            "time": "2018-04-12 12:51:56.065971",
+            "type": "withdrawal",
+            "balance_before": 1008.0,
+            "balance_after": 608.0,
+            "status": "succeeded",
+            "description": "Withdrawal succeeded."
+          },
+          {
+            "time": "2018-04-12 12:51:56.065971",
+            "type": "transaction fee",
+            "balance_before": 608.0,
+            "balance_after": 606.5,
+            "status": "success",
+            "description": "Fee charged - withdraw_fee."
+          },
+          {
+            "time": "2018-04-12 12:52:10.009651",
+            "type": "withdrawal",
+            "balance_before": 606.5,
+            "balance_after": 206.5,
+            "status": "succeeded",
+            "description": "Withdrawal succeeded."
+          },
+          {
+            "time": "2018-04-12 12:52:10.009651",
+            "type": "transaction fee",
+            "balance_before": 206.5,
+            "balance_after": 205.0,
+            "status": "success",
+            "description": "Fee charged - withdraw_fee."
+          },
+          {
+            "time": "2018-04-12 12:52:16.253372",
+            "type": "withdrawal",
+            "balance_before": 205.0,
+            "balance_after": -195.0,
+            "status": "success",
+            "description": "Withdrawal succeeded."
+          },
+          {
+            "time": "2018-04-12 12:52:16.253372",
+            "type": "transaction fee",
+            "balance_before": -195.0,
+            "balance_after": -214.5,
+            "status": "success",
+            "description": "Fee charged - overdraft_fee."
+          },
+          {
+            "time": "2018-04-12 12:52:20.929968",
+            "type": "withdrawal",
+            "balance_before": -214.5,
+            "balance_after": -214.5,
+            "status": "failed",
+            "description": "Withdrawal failed - Balance not enough."
+          },
+          {
+            "time": "2018-04-12 12:52:46.682669",
+            "type": "deposit",
+            "balance_before": -214.5,
+            "balance_after": 1585.5,
+            "status": "succeeded",
+            "description": "Deposit succeeded."
+          },
+          {
+            "time": "2018-04-13 17:49:08.793119",
+            "type": "withdrawal",
+            "balance_before": 1585.5,
+            "balance_after": 1545.5,
+            "status": "succeeded",
+            "description": "Withdrawal succeeded."
+          },
+          {
+            "time": "2018-04-13 17:49:08.793119",
+            "type": "transaction fee",
+            "balance_before": 1545.5,
+            "balance_after": 1544.0,
+            "status": "success",
+            "description": "Fee charged - withdraw_fee."
+          },
+          {
+            "time": "2018-04-14 01:57:29.341365",
+            "type": "withdrawal",
+            "balance_before": 1544.0,
+            "balance_after": 1524.0,
+            "status": "succeeded",
+            "description": "Withdrawal succeeded."
+          },
+          {
+            "time": "2018-04-14 01:57:29.341365",
+            "type": "transaction fee",
+            "balance_before": 1524.0,
+            "balance_after": 1522.5,
+            "status": "success",
+            "description": "Fee charged - withdraw_fee."
           }
         ]
       },
       "savings": {
-        "balance": 5000.0,
-        "transactions": []
+        "balance": 4468.0,
+        "transactions": [
+          {
+            "time": "2018-04-12 12:50:13.115051",
+            "type": "withdrawal",
+            "balance_before": 5000.0,
+            "balance_after": 4960.0,
+            "status": "succeeded",
+            "description": "Withdrawal successful."
+          },
+          {
+            "time": "2018-04-12 12:50:13.115051",
+            "type": "transaction fee",
+            "balance_before": 4960.0,
+            "balance_after": 4957.0,
+            "status": "success",
+            "description": "Fee charged - withdraw_fee."
+          },
+          {
+            "time": "2018-04-12 12:50:32.967626",
+            "type": "withdrawal",
+            "balance_before": 4957.0,
+            "balance_after": 4917.0,
+            "status": "succeeded",
+            "description": "Withdrawal successful."
+          },
+          {
+            "time": "2018-04-12 12:50:32.967626",
+            "type": "transaction fee",
+            "balance_before": 4917.0,
+            "balance_after": 4914.0,
+            "status": "success",
+            "description": "Fee charged - withdraw_fee."
+          },
+          {
+            "time": "2018-04-12 12:50:55.695084",
+            "type": "withdrawal",
+            "balance_before": 4914.0,
+            "balance_after": 4874.0,
+            "status": "succeeded",
+            "description": "Withdrawal successful."
+          },
+          {
+            "time": "2018-04-12 12:50:55.695084",
+            "type": "transaction fee",
+            "balance_before": 4874.0,
+            "balance_after": 4871.0,
+            "status": "success",
+            "description": "Fee charged - withdraw_fee."
+          },
+          {
+            "time": "2018-04-12 12:52:00.370199",
+            "type": "withdrawal",
+            "balance_before": 4871.0,
+            "balance_after": 4471.0,
+            "status": "succeeded",
+            "description": "Withdrawal successful."
+          },
+          {
+            "time": "2018-04-12 12:52:00.370199",
+            "type": "transaction fee",
+            "balance_before": 4471.0,
+            "balance_after": 4468.0,
+            "status": "success",
+            "description": "Fee charged - withdraw_fee."
+          }
+        ]
       }
     }
   },
   "2": {
     "card_number": "4485618638818968",
     "card_type": "VISA",
-    "pin": "1234",
+    "pin": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
     "name": "Jane",
     "accounts": {
       "chequing": {
@@ -139,15 +332,82 @@
   "3": {
     "card_number": "4503506396429566",
     "card_type": "VISA",
-    "pin": "3085",
+    "pin": "7f02ea9e3eddbd1302e69259deaf75511f3f949713c86382d3f47abebb3516a3",
     "name": "Edmund",
     "accounts": {
       "chequing": {
-        "balance": -480.0,
-        "transactions": []
+        "balance": 1e+69,
+        "transactions": [
+          {
+            "time": "2018-04-11 18:30:29.037549",
+            "type": "deposit",
+            "balance_before": -480.0,
+            "balance_after": 1e+69,
+            "status": "succeeded",
+            "description": "Deposit succeeded."
+          },
+          {
+            "time": "2018-04-11 18:30:51.765922",
+            "type": "withdrawal",
+            "balance_before": 1e+69,
+            "balance_after": 1e+69,
+            "status": "succeeded",
+            "description": "Withdrawal succeeded."
+          },
+          {
+            "time": "2018-04-11 18:30:51.765922",
+            "type": "transaction fee",
+            "balance_before": 1e+69,
+            "balance_after": 1e+69,
+            "status": "success",
+            "description": "Fee charged - withdraw_fee."
+          }
+        ]
       },
       "savings": {
-        "balance": 0.0,
+        "balance": 99.0,
+        "transactions": [
+          {
+            "time": "2018-04-11 18:30:38.327199",
+            "type": "deposit",
+            "balance_before": 0.0,
+            "balance_after": 99.0,
+            "status": "succeeded",
+            "description": "Deposit succeeded."
+          }
+        ]
+      }
+    }
+  },
+  "4": {
+    "card_number": "20180411212318",
+    "card_type": "VISA",
+    "pin": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
+    "name": "Pedram",
+    "accounts": {}
+  },
+  "5": {
+    "card_number": "20180412120207",
+    "card_type": "VISA",
+    "pin": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
+    "name": "Robert",
+    "accounts": {}
+  },
+  "6": {
+    "card_number": "20180412122924",
+    "card_type": "VISA",
+    "pin": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
+    "name": "Dani",
+    "accounts": {}
+  },
+  "8": {
+    "card_number": "20180412204709",
+    "card_type": "VISA",
+    "pin": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
+    "name": "aldrich",
+    "accounts": {
+      "chequing": {
+        "balance": 0,
         "transactions": []
       }
     }

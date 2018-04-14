@@ -6,7 +6,15 @@ from models.customer_model import CustomerModelForCLI
 
 class LoginController():
     '''
-    Login for the admin class. This is the first view's controller.
+        Controller class for the LoginInterface view.
+        Initialize customer and employee model for the main controller
+
+        Attributes:
+            main_controller: a reference to the main controller object
+            login_interface: the view this class controls
+
+        Methods:
+            login: log user into the system and create appropriate models for the main controller
     '''
     def __init__(self, main_controller):
         self.main_controller = main_controller
@@ -14,10 +22,7 @@ class LoginController():
         self.login()
 
     def login(self):
-        '''
-        Asks for user name and password, hashes the PIN, checks if matches in the json file for employees.
-        :return:None
-        '''
+
         while 1:
             username = input('Username: ')
             password = getpass.getpass(prompt='Password: ')

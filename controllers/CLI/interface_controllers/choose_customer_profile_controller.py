@@ -4,8 +4,16 @@ from views.CLI.cli_interface import ChooseCustomerProfileInterface
 
 class ChooseCustomerProfileController():
     '''
-    Account for asking PIN, when modifing anythong with account
-    Checks current constroller and next, as it is interference class
+        Controller class for the ChooseCustomerProfileInterface view.
+
+        Attributes:
+            main_controller: a reference to the main controller object
+            next_controller: determines the next controller that is going to replace the current one
+            choose_customer_profile_interface: the view this class controls
+
+        Methods:
+            choose_customer_profile: gets customer profile information
+                using main controller's customer model
     '''
     def __init__(self, main_controller, next_controller):
         self.main_controller = main_controller
@@ -14,12 +22,7 @@ class ChooseCustomerProfileController():
         self.choose_customer_profile()
 
     def choose_customer_profile(self):
-        '''
-        Functions asks for the PIN from the user.
-        It hides the pin for security
-        Checks if PINs match with each other and the PIN in the json file
-        :return:
-        '''
+
         customer_card_number = input('Enter the customer card number: ')
         self.main_controller.cancel_check(customer_card_number)
         pin = getpass.getpass(prompt='Please enter pin: ')

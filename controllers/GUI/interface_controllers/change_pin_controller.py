@@ -2,6 +2,17 @@ import hashlib
 from views.GUI.change_pin_interface import ChangePinInterface
 
 class ChangePinController():
+    '''
+        Controller class for the ChangePinInterface view.
+
+        Attributes:
+            main_controller: a reference to the main controller object
+            change_pin_interface: the view this class controls
+
+        Methods:
+            proceed: proceed to confirm PIN change
+            cancel: reset current account data and return user to the main menu
+    '''
     def __init__(self, main_controller):
         self.main_controller = main_controller
         self.main_controller.main_interface.master.title('Change PIN')

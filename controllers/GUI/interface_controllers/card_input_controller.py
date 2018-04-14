@@ -4,6 +4,16 @@ from views.GUI.card_input_interface import CardInputInterface
 from models.customer_model import CustomerModelForClient
 
 class CardInputController():
+    '''
+        Controller class for the CardInputInterface view.
+
+        Attributes:
+            main_controller: a reference to the main controller object
+            card_input_interface: the view this class controls
+
+        Methods:
+            log_in: Let user login using information from the customer model
+    '''
     def __init__(self, main_controller):
         self.main_controller = main_controller
         self.main_controller.main_interface.master.title('Enter Card Number')

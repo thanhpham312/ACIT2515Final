@@ -3,7 +3,7 @@ from controllers.GUI.main_client_controller import MainClientController
 
 class ATMSimulator():
     '''
-    Main file to run to start the atm simulator
+        Starting point for the GUI version of the program
     '''
     def __init__(self):
         self.root = Tk()

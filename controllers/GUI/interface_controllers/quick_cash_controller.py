@@ -2,6 +2,16 @@ from tkinter import messagebox
 from views.GUI.quick_cash_interface import QuickCashInterface
 
 class QuickCashController():
+    '''
+        Controller class for the QuickCashInterface view.
+
+        Attributes:
+            main_controller: a reference to the main controller object
+            quick_cash_interface: the view this class controls
+
+        Methods:
+            withdraw_quick_cash: Take money out of user account using the customer model with a set amount
+    '''
     def __init__(self, main_controller):
         self.main_controller = main_controller
         self.main_controller.main_interface.master.title('Quick Cash')

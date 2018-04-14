@@ -1,7 +1,12 @@
 import hashlib
+import getpass
 from views.CLI.cli_interface import ChooseCustomerProfileInterface
 
 class ChooseCustomerProfileController():
+    '''
+    Account for asking PIN, when modifing anythong with account
+    Checks current constroller and next, as it is interference class
+    '''
     def __init__(self, main_controller, next_controller):
         self.main_controller = main_controller
         self.next_controller = next_controller
@@ -9,11 +14,17 @@ class ChooseCustomerProfileController():
         self.choose_customer_profile()
 
     def choose_customer_profile(self):
+        '''
+        Functions asks for the PIN from the user.
+        It hides the pin for security
+        Checks if PINs match with each other and the PIN in the json file
+        :return:
+        '''
         customer_card_number = input('Enter the customer card number: ')
         self.main_controller.cancel_check(customer_card_number)
-        pin = input('Please enter pin: ')
+        pin = getpass.getpass(prompt='Please enter pin: ')
         self.main_controller.cancel_check(pin)
-        pin_retype = input('Please enter pin again: ')
+        pin_retype = getpass.getpass(prompt='Please enter pin again: ')
         self.main_controller.cancel_check(pin_retype)
 
         dict_of_users = self.main_controller.customer_model.customers_dict

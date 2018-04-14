@@ -2,13 +2,19 @@ import getpass
 from views.CLI.cli_interface import PrintTransactionInterface
 
 class PrintTransactionsController():
+    """
+    Controller to print transactions
+    """
     def __init__(self, main_controller):
         self.main_controller = main_controller
         self.account_creation_interface = PrintTransactionInterface()
         self.print_transactions()
 
     def print_transactions(self):
-
+        '''
+        Controller to print all transaction logs for specific user and specific account.
+        :return:None
+        '''
 
         success = False
         if self.main_controller.customer_model.current_customer_profile != None:

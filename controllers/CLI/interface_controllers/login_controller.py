@@ -5,12 +5,19 @@ from models.employee_model import EmployeeModel
 from models.customer_model import CustomerModelForCLI
 
 class LoginController():
+    '''
+    Login for the admin class. This is the first view's controller.
+    '''
     def __init__(self, main_controller):
         self.main_controller = main_controller
         self.login_interface = LoginInterface()
         self.login()
 
     def login(self):
+        '''
+        Asks for user name and password, hashes the PIN, checks if matches in the json file for employees.
+        :return:None
+        '''
         while 1:
             username = input('Username: ')
             password = getpass.getpass(prompt='Password: ')

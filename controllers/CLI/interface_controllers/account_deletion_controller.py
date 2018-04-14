@@ -2,12 +2,21 @@ import getpass
 from views.CLI.cli_interface import AccountDeletionInterface
 
 class AccountDeletionController():
+    '''
+    Controller to delete account
+    Parameter - main controller
+    '''
     def __init__(self, main_controller):
         self.main_controller = main_controller
         self.account_creation_interface = AccountDeletionInterface()
         self.delete_account()
 
     def delete_account(self):
+        '''
+        Function deletes the account,
+        checks for input validations
+        :return: None
+        '''
         success = False
 
         if self.main_controller.customer_model.current_customer_profile != None:

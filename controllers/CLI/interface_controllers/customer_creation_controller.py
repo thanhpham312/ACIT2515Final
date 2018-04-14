@@ -2,12 +2,20 @@ import getpass
 from views.CLI.cli_interface import CustomerCreationInterface
 
 class CustomerCreationController():
+    '''
+    Creates the profile for the customer
+    '''
     def __init__(self, main_controller):
         self.main_controller = main_controller
         self.account_creation_interface = CustomerCreationInterface()
         self.create_customer()
 
     def create_customer(self):
+        '''
+        Function creates the profile for customer with name, card number, PIN, card type and accounts
+        Checks for PIN match and input validations
+        :return: None
+        '''
         success = False
         name = input('Please enter a name for new customer: ')
         self.main_controller.cancel_check(name)

@@ -1,14 +1,33 @@
 # ACIT 2515 Final Project - ATM Simulator
 
-## Students Information
+##################################### Students Information ################################################
 Ivan Shalagin
 
 Thanh Pham
 
-Viktor Sheverdin
+Viktor Sheverdin (A01018756)
 
-## Project Description
-This is the simulator of the ATM machine, designed for both customers and admins.
+##################################### Project Description ##################################################
+Overview:
+    This is the simulator of the ATM machine, designed for both customers and admins.
+    Program is designed using MVC model, and is disigned in such a waay for both admin and customer side.
+    All data are stored in the JSON format, and all log reports are created in the TXT format.
+
+
+Administrative side:
+    From the admin side, it is possible to create, manage, and delete accounts.
+    All modification for the accounts are done, based on the card number.
+    PINs and hashed and that is why secured. They are stored in the json formatted document and checked if matched with
+    passing PIN when login.
+
+Customer side:
+    From the customer side, the program has classical designe and basic working interface.
+    The process is done so after the transaction completion it is possible to either continue operations, or
+    to quit and allow other customer to use it.
+
+
+####################################### INSTRUCTIONS ########################################################
+
 
 Admin part:
 Admin part consists from the Command Line Interface(CLI later).
@@ -52,6 +71,42 @@ To delete account:
 To delete profile:
     1. Type <2> and press ENTER.
     2. Type account number and press ENTER.
+
+For user in the GUI:
+    1. To start application from the command line, open the atm_simulator file.
+    2. In the appeared window enter the card number and PIN. For test: card number is 4856673772575768 and
+        PIN is 1234.
+        Note: PIN is numbers only.
+    3. To clear all fields, click CANCEL
+
+Functions available for user in GUI:
+    1. Quick cash - withdraws $40 from the selected account.
+    2. Withdraw.
+    3. Deposit.
+    4. Check balance.
+    5. Change PIN
+    6. Exit - returns to the login page
+
+To withdraw:
+    1. Login, using card number and PIN
+    2. Click withdraw.
+    3. Click account type.
+    4. Click on the sum you want to withdraw. Alternatively click on OTHER and type amount.
+
+To deposit:
+    1. Login, using card number and PIN
+    2. Click deposit.
+    3. Click account type.
+    4. Type the amount to deposit.
+
+To check balance:
+    1. Login, using card number and PIN
+    2. Click check balance.
+
+To change PIN:
+    1. Login, using card number and PIN
+    2. Click change PIN.
+    3. Type new PIN.
 
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis nibh orci. Phasellus imperdiet interdum eros, eget semper purus pharetra non. Nulla imperdiet felis bibendum tortor posuere venenatis. Ut sem massa, ornare eu tincidunt ac, laoreet sed orci. Maecenas pharetra erat nibh, eget tempus velit consectetur nec. Nullam vel est congue sem vulputate commodo eget non turpis. Integer sollicitudin erat nibh, id interdum neque commodo in. Nunc ipsum elit, sodales eu tempor nec, accumsan in diam. In et faucibus urna. Maecenas et tellus eu risus consequat volutpat. Nulla sed vehicula orci. Donec a nulla dolor. Aenean quis ipsum eu dolor pellentesque aliquam eu eget ipsum. Integer nulla quam, dictum aliquam cursus nec, tristique sit amet velit. Maecenas mollis ipsum vel mi luctus viverra.
